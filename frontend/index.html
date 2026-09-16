@@ -233,7 +233,10 @@
 
         <!-- Quick Verse Suggestions -->
         <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex flex-wrap gap-1.5">
-          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Try popular passages:</span>
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Try popular passages & difficult questions:</span>
+          <button onclick="queryBackstoryQuick('Genesis 19:32')" class="chip-btn">🔥 Genesis 19:32 (Lot & Daughters)</button>
+          <button onclick="queryBackstoryQuick('1 Samuel 28')" class="chip-btn">🔮 1 Samuel 28 (Witch of Endor)</button>
+          <button onclick="queryBackstoryQuick('2 Samuel 11')" class="chip-btn">👑 2 Samuel 11 (David & Bathsheba)</button>
           <button onclick="queryBackstoryQuick('Genesis 37')" class="chip-btn">🌾 Genesis 37 (Joseph in Pit)</button>
           <button onclick="queryBackstoryQuick('Exodus 14')" class="chip-btn">🌊 Exodus 14 (Red Sea Crossing)</button>
           <button onclick="queryBackstoryQuick('1 Samuel 17')" class="chip-btn">🪨 1 Samuel 17 (David & Goliath)</button>
@@ -262,7 +265,7 @@
           </div>
           <h2 class="font-serif font-bold text-xl sm:text-3xl tracking-wide mb-2">Speak Your Heart to God</h2>
           <p class="text-amber-100 text-xs sm:text-sm leading-relaxed">
-            Whenever you are feeling depressed, anxious, brokenhearted, or lonely, God's Word has a personal promise waiting for you in English and Telugu.
+            Whenever you are feeling angry, depressed, anxious, betrayed by friends, or lonely, God's Word has a personal promise waiting for you in English and Telugu.
           </p>
         </div>
       </div>
@@ -273,7 +276,7 @@
         <div class="flex flex-col sm:flex-row gap-2">
           <div class="relative flex-1">
             <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
-            <input type="text" id="emotion-input" placeholder="Type here (e.g. 'I am depressed', 'anxious', 'feeling hopeless', 'brokenhearted')..."
+            <input type="text" id="emotion-input" placeholder="Type here (e.g. 'angry', 'im angry on my friend', 'depressed', 'anxious')..."
               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
               onkeydown="if(event.key === 'Enter') handleEmotionSearch()" />
           </div>
@@ -286,13 +289,15 @@
         <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60">
           <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block mb-2">Or select your current state:</span>
           <div class="flex flex-wrap gap-1.5">
+            <button onclick="queryEmotionQuick('im angry on my friend')" class="chip-btn">💔 Angry at Friend / స్నేహితునిపై కోపం</button>
+            <button onclick="queryEmotionQuick('angry')" class="chip-btn">😡 Anger & Wrath / కోపము</button>
             <button onclick="queryEmotionQuick('im depressed')" class="chip-btn">🌧️ Depressed / క్రుంగుదల</button>
             <button onclick="queryEmotionQuick('anxious')" class="chip-btn">🌪️ Anxious / ఆందోళన</button>
             <button onclick="queryEmotionQuick('lonely')" class="chip-btn">🥀 Lonely / ఒంటరితనము</button>
             <button onclick="queryEmotionQuick('fear')" class="chip-btn">🛡️ Afraid / భయము</button>
             <button onclick="queryEmotionQuick('grief')" class="chip-btn">🕊️ Grieving / దుఃఖము</button>
-            <button onclick="queryEmotionQuick('guilt')" class="chip-btn">⚡ Guilt / అపరాధభావము</button>
-            <button onclick="queryEmotionQuick('exhausted')" class="chip-btn">🔋 Weary / అలసట</button>
+            <button onclick="queryEmotionQuick('temptation')" class="chip-btn">⚓ Temptation / శోధన</button>
+            <button onclick="queryEmotionQuick('doubt')" class="chip-btn">❓ Doubt / సందేహము</button>
           </div>
         </div>
       </div>
@@ -309,17 +314,17 @@
     <section id="tab-incidents" class="tab-content hidden">
       <div class="bg-white dark:bg-stone-800/90 rounded-3xl p-5 sm:p-7 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
         <div class="max-w-2xl mb-4">
-          <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2 py-0.5 rounded uppercase tracking-wider">Semantic Incident Search</span>
-          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-2 mb-1">Find Any Biblical Incident or Story</h2>
+          <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2 py-0.5 rounded uppercase tracking-wider">Comprehensive Biblical Search</span>
+          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-2 mb-1">Find Any Biblical Incident, Person or Topic</h2>
           <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
-            Don't remember the chapter or verse? Simply type what you remember (e.g. <em>"man swallowed by fish"</em>, <em>"parting of red sea"</em>, <em>"water into wine"</em>).
+            Search <strong>any topic or story</strong> across all 66 books of the Bible (e.g. <em>"jacob story"</em>, <em>"witchcraft"</em>, <em>"man swallowed by fish"</em>, <em>"parting of red sea"</em>).
           </p>
         </div>
 
         <div class="flex flex-col sm:flex-row gap-2">
           <div class="relative flex-1">
             <i data-lucide="sparkles" class="w-4 h-4 absolute left-3.5 top-3.5 text-amber-500"></i>
-            <input type="text" id="incident-input" placeholder="Type a story you recall (e.g. 'man swallowed by a fish', 'david and goliath')..."
+            <input type="text" id="incident-input" placeholder="Search any topic (e.g. 'jacob story', 'witchcraft', 'david goliath', 'prodigal son')..."
               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
               onkeydown="if(event.key === 'Enter') handleIncidentSearch()" />
           </div>
@@ -330,13 +335,15 @@
 
         <!-- Quick Story Suggestions -->
         <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex flex-wrap gap-1.5">
-          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Try these stories:</span>
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Explore major accounts & topics:</span>
+          <button onclick="queryIncidentQuick('jacob story')" class="chip-btn">🌾 Jacob's Story (యాకోబు చరిత్ర)</button>
+          <button onclick="queryIncidentQuick('witchcraft')" class="chip-btn">🔮 Witchcraft & Saul (మంత్రవిద్య)</button>
           <button onclick="queryIncidentQuick('man swallowed by a fish')" class="chip-btn">🐋 Jonah & The Big Fish</button>
           <button onclick="queryIncidentQuick('parting of red sea')" class="chip-btn">🌊 Parting of the Red Sea</button>
           <button onclick="queryIncidentQuick('david goliath')" class="chip-btn">🪨 David & Goliath</button>
           <button onclick="queryIncidentQuick('walks on water')" class="chip-btn">🚶‍♂️ Jesus Walks on Water</button>
           <button onclick="queryIncidentQuick('daniel lions')" class="chip-btn">🦁 Daniel in Lions' Den</button>
-          <button onclick="queryIncidentQuick('water into wine')" class="chip-btn">🍷 Water into Wine at Cana</button>
+          <button onclick="queryIncidentQuick('water into wine')" class="chip-btn">🍷 Water into Wine</button>
           <button onclick="queryIncidentQuick('prodigal son')" class="chip-btn">🏃 The Prodigal Son</button>
         </div>
       </div>

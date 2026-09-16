@@ -1031,7 +1031,7 @@ function renderBackstoryResult(data) {
       <!-- Top Title & Navigation -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-stone-200/70 dark:border-stone-700">
         <div>
-          <div class="flex items-center gap-2 mb-1.5">
+          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
             <span class="text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300/40">
               ${data.reference}
             </span>
@@ -1053,12 +1053,49 @@ function renderBackstoryResult(data) {
         </button>
       </div>
 
+      <!-- MORAL VERDICT & DIVINE ASSESSMENT BANNER -->
+      ${ctx.moral_verdict ? `
+        <div class="mt-5 p-4 sm:p-5 rounded-2xl border ${
+          ctx.moral_verdict.is_sin
+            ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-900/60"
+            : "bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-900/60"
+        } shadow-xs">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-xl ${
+              ctx.moral_verdict.is_sin ? "bg-rose-600 text-white" : "bg-emerald-600 text-white"
+            } flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+              <i data-lucide="${ctx.moral_verdict.is_sin ? "alert-triangle" : "check-circle"}" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1.5 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-bold uppercase tracking-wider ${
+                  ctx.moral_verdict.is_sin ? "text-rose-800 dark:text-rose-300" : "text-emerald-800 dark:text-emerald-300"
+                }">
+                  ${ctx.moral_verdict.badge_en}
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold font-telugu ${
+                ctx.moral_verdict.is_sin ? "text-rose-700 dark:text-rose-400" : "text-emerald-700 dark:text-emerald-400"
+              }">
+                ${ctx.moral_verdict.badge_te}
+              </p>
+              <p class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed pt-1">
+                ${ctx.moral_verdict.summary_en}
+              </p>
+              <p class="text-xs sm:text-sm text-stone-700 dark:text-stone-300 font-telugu leading-relaxed pt-1 border-t border-rose-200/50 dark:border-rose-900/40">
+                ${ctx.moral_verdict.summary_te}
+              </p>
+            </div>
+          </div>
+        </div>
+      ` : ""}
+
       <!-- Scripture Verses Section -->
       <div class="mt-5">
         ${versesHtml}
       </div>
 
-      <!-- 3 Pillars Grid -->
+      <!-- INSIGHT PILLARS GRID -->
       <div class="space-y-5">
         
         <!-- Pillar 1: The Backstory -->
@@ -1090,7 +1127,7 @@ function renderBackstoryResult(data) {
             </div>
             <div>
               <h3 class="font-serif font-bold text-sm sm:text-base text-stone-900 dark:text-stone-100">2. Why Did It Happen? • ఎందుకు జరిగింది?</h3>
-              <p class="text-[11px] text-orange-800 dark:text-orange-400">The immediate conflict, human choices, trials, or divine circumstances</p>
+              <p class="text-[11px] text-orange-800 dark:text-orange-400">The immediate human motives, weaknesses, trials, or divine circumstances</p>
             </div>
           </div>
           <div class="space-y-2.5 text-xs sm:text-sm">
@@ -1103,14 +1140,37 @@ function renderBackstoryResult(data) {
           </div>
         </div>
 
-        <!-- Pillar 3: God's Future Thoughts & Redemptive Plan -->
+        <!-- Pillar 3: Consequences of Sin / Results -->
+        ${ctx.consequences_of_sin ? `
+          <div class="rounded-2xl p-5 bg-gradient-to-br from-red-50/80 to-rose-50/40 dark:from-stone-900 dark:to-stone-900/60 border border-red-200 dark:border-stone-700 shadow-xs">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="scale" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-serif font-bold text-sm sm:text-base text-stone-900 dark:text-stone-100">3. Biblical Consequences & Judgment • పర్యవసానములు & దైవిక తీర్పు</h3>
+                <p class="text-[11px] text-red-800 dark:text-red-400">The historical aftermath, curses, and consequences that followed</p>
+              </div>
+            </div>
+            <div class="space-y-2.5 text-xs sm:text-sm">
+              <p class="text-stone-800 dark:text-stone-200 leading-relaxed font-body">
+                ${ctx.consequences_of_sin.summary_en}
+              </p>
+              <p class="text-stone-700 dark:text-stone-300 font-telugu leading-relaxed pt-2 border-t border-red-200/60 dark:border-stone-800">
+                ${ctx.consequences_of_sin.summary_te}
+              </p>
+            </div>
+          </div>
+        ` : ""}
+
+        <!-- Pillar 4: God's Future Thoughts & Redemptive Plan -->
         <div class="rounded-2xl p-5 bg-gradient-to-br from-emerald-50/80 to-teal-50/40 dark:from-stone-900 dark:to-stone-900/60 border border-emerald-200 dark:border-stone-700 shadow-xs">
           <div class="flex items-center gap-2.5 mb-3">
             <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
               <i data-lucide="sparkles" class="w-4 h-4"></i>
             </div>
             <div>
-              <h3 class="font-serif font-bold text-sm sm:text-base text-stone-900 dark:text-stone-100">3. God's Future Thoughts & Purpose • దేవుని భవిష్యత్ సంకల్పం</h3>
+              <h3 class="font-serif font-bold text-sm sm:text-base text-stone-900 dark:text-stone-100">4. God's Future Thoughts & Purpose • దేవుని భవిష్యత్ సంకల్పం</h3>
               <p class="text-[11px] text-emerald-800 dark:text-emerald-400">How God transformed this situation for greater redemptive glory and prophecy</p>
             </div>
           </div>
@@ -1123,6 +1183,35 @@ function renderBackstoryResult(data) {
             </p>
           </div>
         </div>
+
+        <!-- APOLOGETIC DEFENSE FOR SKEPTICS & CRITICS -->
+        ${ctx.apologetics_for_critics ? `
+          <div class="rounded-2xl p-5 bg-gradient-to-br from-amber-100/70 via-stone-50 to-amber-50/80 dark:from-stone-900 dark:via-stone-900/90 dark:to-amber-950/30 border-2 border-amber-300 dark:border-amber-700/60 shadow-sm">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-700 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-serif font-bold text-sm sm:text-base text-amber-950 dark:text-amber-200">
+                  Answering Critics & Skeptics • విమర్శకులకు లేఖన సమాధానం
+                </h3>
+                <p class="text-[11px] text-amber-800 dark:text-amber-400">Direct biblical response when people ask: "Why is this in the Bible?"</p>
+              </div>
+            </div>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <div class="p-2.5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-amber-200/80 dark:border-stone-700">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 block mb-0.5">Common Question / Objection:</span>
+                <p class="font-medium italic text-stone-900 dark:text-stone-100">${ctx.apologetics_for_critics.question_en}</p>
+                <p class="font-telugu text-stone-700 dark:text-stone-300 text-xs mt-1">${ctx.apologetics_for_critics.question_te}</p>
+              </div>
+              <div class="pt-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 block mb-1">Biblical Truth & Vindication:</span>
+                <p class="text-stone-800 dark:text-stone-200 leading-relaxed">${ctx.apologetics_for_critics.defense_en}</p>
+                <p class="text-stone-700 dark:text-stone-300 font-telugu leading-relaxed pt-2 border-t border-amber-200 dark:border-stone-700 mt-2">${ctx.apologetics_for_critics.defense_te}</p>
+              </div>
+            </div>
+          </div>
+        ` : ""}
 
       </div>
 
