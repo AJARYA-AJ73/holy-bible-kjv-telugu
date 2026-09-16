@@ -1,0 +1,138 @@
+{
+  "categories": [
+    {
+      "id": "roman_historians",
+      "name_en": "Ancient Roman Historians",
+      "name_te": "ప్రాచీన రోమన్ చరిత్రకారుల ఆధారాలు",
+      "description_en": "First and second-century Roman historians with zero Christian allegiance who recorded Jesus as an authentic historical person.",
+      "description_te": "క్రీస్తు శకము 1, 2 శతాబ్దాల నాటి రోమన్ చరిత్రకారులు క్రీస్తు జీవితము, మరణమును నిర్ధారించిన ఆధారాలు."
+    },
+    {
+      "id": "jewish_sources",
+      "name_en": "Jewish Historical Records",
+      "name_te": "యూదా చారిత్రక రికార్డులు",
+      "description_en": "Jewish records from the first century confirming the execution of Jesus and His brother James.",
+      "description_te": "యేసు క్రీస్తు మరణము, ఆయన శిష్యుల గురించిన యూదా రికార్డులు."
+    },
+    {
+      "id": "archaeology",
+      "name_en": "Archaeological Discoveries",
+      "name_te": "పురాతత్వ శాస్త్ర ఆధారాలు (ఆర్కియాలజీ)",
+      "description_en": "Inscriptions, tombs, and artifacts confirming the exact people, rulers, and locations mentioned in the Gospels.",
+      "description_te": "సువార్తలలో పేర్కొనబడిన వ్యక్తులు, ప్రదేశాలు, శతాబ్దాల నాటి రాతి శాసనాలు."
+    },
+    {
+      "id": "manuscripts",
+      "name_en": "Manuscript & Eyewitness Explosion",
+      "name_te": "ప్రాచీన పత్రాలు & ప్రత్యక్ష సాక్ష్యాలు",
+      "description_en": "Over 5,800 Greek manuscripts and the undeniable martyrdom of eyewitness disciples.",
+      "description_te": "వేలాది గ్రీకు ప్రతులు మరియు ప్రాణాలు అర్పించిన ప్రత్యక్ష సాక్షులు."
+    }
+  ],
+  "evidences": [
+    {
+      "id": "tacitus",
+      "category": "roman_historians",
+      "author": "Cornelius Tacitus (AD 56 - c. 120)",
+      "author_te": "కొర్నేలియస్ టాసిటస్ (రోమన్ చరిత్రకారుడు)",
+      "source": "Annals, Book 15, Chapter 44 (Written c. AD 116)",
+      "title_en": "Tacitus Confirms Jesus' Execution Under Pontius Pilate",
+      "title_te": "పొంతి పిలాతు అధీనములో యేసు మరణమును టాసిటస్ నిర్ధారించుట",
+      "quote_en": "Christus, from whom the name had its origin, suffered the extreme penalty during the reign of Tiberius at the hands of one of our procurators, Pontius Pilatus, and a most mischievous superstition, thus checked for the moment, again broke out not only in Judaea, the first source of the evil, but even in Rome...",
+      "quote_te": "'క్రీస్తు అనే వ్యక్తి నుండి ఈ పేరు ఉద్భవించింది. అతడు తిబెరియస్ చక్రవర్తి పరిపాలనా కాలములో మా అధిపతియైన పొంతి పిలాతు చేతిలో అత్యంత కఠినమైన శిక్ష (సిలువ మరణము) అనుభవించెను...'",
+      "significance_en": "Tacitus is considered Rome's greatest ancient historian. As an elite Roman senator and hostile non-believer, his Annals independently corroborate four crucial gospel facts: (1) Jesus lived, (2) He was executed by Pontius Pilate, (3) this occurred during the reign of Emperor Tiberius, and (4) His followers spread explosively from Judea to the imperial capital of Rome.",
+      "significance_te": "టాసిటస్ రోమ్ యొక్క అత్యున్నత చరిత్రకారుడు. క్రైస్తవ మతముతో ఎటువంటి సంబంధం లేని ఈ రోమన్ రచయిత: 1) యేసు జీవించాడని, 2) తిబెరియస్ చక్రవర్తి కాలములో పొంతి పిలాతు చేత సిలువ వేయబడ్డాడని, 3) ఆయన అనుచరులు యూదయ నుండి రోమా సామ్రాజ్యమంతటా వ్యాపించారని స్పష్టముగా రాశాడు."
+    },
+    {
+      "id": "josephus",
+      "category": "jewish_sources",
+      "author": "Flavius Josephus (AD 37 - c. 100)",
+      "author_te": "ఫ్లావియస్ జోసెఫస్ (మొదటి శతాబ్దపు యూదా చరిత్రకారుడు)",
+      "source": "Antiquities of the Jews, Books 18 & 20 (Written c. AD 93-94)",
+      "title_en": "Josephus Records Jesus the Teacher & James 'The Brother of Jesus'",
+      "title_te": "యేసు మరియు 'యేసు యొక్క సహోదరుడైన యాకోబు' గురించి జోసెఫస్",
+      "quote_en": "Now there was about this time Jesus, a wise man... He drew over to him both many of the Jews and many of the Gentiles... When Pilate, at the suggestion of the principal men amongst us, had condemned him to the cross, those that loved him at the first did not forsake him... And the tribe of Christians, so named from him, are not extinct at this day.",
+      "quote_te": "'ఆ కాలమందు యేసు అను జ్ఞానవంతుడైన వ్యక్తి ఉండెను... ఆయన ఎందరో యూదులను, అన్యులను తనవైపు ఆకర్షించెను. మన ప్రముఖుల కోరికపై పిలాతు ఆయనను సిలువ వేయించినప్పుడు, ఆయనను మొదట ప్రేమించినవారు ఆయనను విడిచిపెట్టలేదు... ఆయన పేరిట పిలువబడుచున్న క్రైస్తవులు నేటికీ ఉన్నారు.'",
+      "significance_en": "Josephus was a first-century Pharisee and court historian in Rome. In Book 20, he independently documents the execution of 'James, the brother of Jesus, who was called Christ' by the Sanhedrin in AD 62, confirming Jesus' historic identity and earthly family in 1st-century Jerusalem.",
+      "significance_te": "జోసెఫస్ మొదటి శతాబ్దపు సుప్రసిద్ధ యూదా చరిత్రకారుడు. తన గ్రంథములో యేసు బోధనలను, అద్భుతాలను, పిలాతు విధించిన సిలువ మరణమును మాత్రమే కాక, క్రీ.శ. 62లో 'క్రీస్తు అనబడిన యేసు యొక్క సహోదరుడైన యాకోబు'ను యూదా మతాధికారులు చంపించిన సంఘటనను కూడా నమోదు చేశాడు."
+    },
+    {
+      "id": "pliny",
+      "category": "roman_historians",
+      "author": "Pliny the Younger (AD 61 - c. 113)",
+      "author_te": "ప్లినీ ది యంగర్ (రోమన్ గవర్నర్)",
+      "source": "Letters to Emperor Trajan, Book 10, Letter 96 (c. AD 112)",
+      "title_en": "Roman Governor Describes Worship of Christ 'As to a God'",
+      "title_te": "క్రీస్తును దేవునిగా ఆరాధించు క్రైస్తవుల గురించి ప్లినీ రికార్డు",
+      "quote_en": "They were in the habit of meeting on a certain fixed day before it was light, when they sang in alternate verses a hymn to Christ, as to a god, and bound themselves by a solemn oath, not to do any wicked deeds, never to commit any fraud, theft or adultery, nor falsify their word...",
+      "quote_te": "'వారు ఒక నిర్ణీత దినమున (ఆదివారము) సూర్యోదయానికి ముందే సమావేశమై, క్రీస్తును ఒక దేవునిగా స్తుతిస్తూ కీర్తనలు పాడుదురు. దొంగతనము, వ్యభిచారము, మోసము చేయకూడదని పవిత్రమైన ప్రమాణము చేసికొందురు...'",
+      "significance_en": "Pliny was the Roman governor of Bithynia-Pontus (modern Turkey). Writing to Emperor Trajan, he provides undeniable third-party evidence that within decades of Jesus' crucifixion, everyday citizens met weekly, sang praises to Christ as divine, and adhered to rigorous biblical morality.",
+      "significance_te": "రోమన్ చక్రవర్తి ట్రోజన్‌కు గవర్నర్ ప్లినీ రాసిన లేఖలలో, మొదటి శతాబ్దములోనే ప్రజలు క్రీస్తును దేవునిగా ఆరాధిస్తూ, పవిత్రమైన జీవితాన్ని గడుపుతూ సంఘముగా కూడుకున్నారని లిఖితపూర్వకంగా నమోదైంది."
+    },
+    {
+      "id": "pilate_stone",
+      "category": "archaeology",
+      "author": "Archaeological Artifact (Discovered 1961)",
+      "author_te": "పురాతత్వ శిలాశాసనం (1961లో కనుగొనబడింది)",
+      "source": "Caesarea Maritima, Mediterranean Coast of Israel",
+      "title_en": "The Pontius Pilate Inscription Stone",
+      "title_te": "పొంతి పిలాతు పేరుగల ప్రాచీన శిలాశాసనం",
+      "quote_en": "Inscription reads in Latin: '[DIS AUGUSTI]S TIBERIEUM ... [PON]TIUS PILATUS ... [PRAEF]ECTUS IUDA[EAE]'",
+      "quote_te": "లాటిన్ శాసనము: 'యూదయ అధిపతియైన పొంతి పిలాతు (PONTIUS PILATUS, PRAEFECTUS IUDAEAE)...'",
+      "significance_en": "For centuries, skeptics claimed Pontius Pilate was an invented literary figure. In 1961, Italian archaeologist Antonio Frova unearthed a 2.5-foot carved limestone block in Caesarea Maritima bearing Pontius Pilate's actual name and exact historical title: 'Prefect of Judea', verifying the historical reliability of the Gospels.",
+      "significance_te": "పొంతి పిలాతు కేవలం ఒక కల్పిత పాత్ర అని కొందరు భావించారు. అయితే 1961లో ఇటాలియన్ పరిశోధకులు కైసరయలో త్రవ్వకాలు జరిపినప్పుడు లభించిన రాతి శాసనంపై 'పొంతి పిలాతు, యూదయ అధిపతి' అని స్పష్టముగా చెక్కబడియున్నది."
+    },
+    {
+      "id": "caiaphas_ossuary",
+      "category": "archaeology",
+      "author": "Archaeological Artifact (Discovered 1990)",
+      "author_te": "కయప సమాధి పేటిక (1990లో కనుగొనబడింది)",
+      "source": "Peace Forest, South of Jerusalem",
+      "title_en": "The Ossuary of High Priest Caiaphas",
+      "title_te": "ప్రధాన యాజకుడైన కయప అస్థికల పేటిక",
+      "quote_en": "Aramaic Inscription carved on the side: 'Yehosef bar Qayafa' (Joseph, son of Caiaphas)",
+      "quote_te": "అరామిక్ శాసనము: 'యోసేఫ్ బార్ కయాఫా' (కయప కుమారుడైన యోసేపు)",
+      "significance_en": "In November 1990, workers in Jerusalem accidentally broke through the ceiling of a 1st-century burial cave. Inside, archaeologists discovered an ornate limestone ossuary (bone box) carrying the name of Caiaphas, the very Jewish High Priest who orchestrated Jesus' trial and handed Him to Pilate (Matthew 26:57).",
+      "significance_te": "1990లో యెరూషలేము సమీపములో మొదటి శతాబ్దపు సమాధి గుహ బయల్పడింది. అందులో యేసు ప్రభువును విచారించి పిలాతుకు అప్పగించిన ప్రధాన యాజకుడైన 'కయప' పేరుగల అస్థికల పెట్టె లభించింది. సువార్తల చారిత్రక సత్యానికి ఇది తిరుగులేని రుజువు."
+    },
+    {
+      "id": "pool_siloam",
+      "category": "archaeology",
+      "author": "Archaeological Discovery (2004)",
+      "author_te": "సిలోయము కొలను వెలికితీత (2004)",
+      "source": "City of David, Jerusalem",
+      "title_en": "The Discovery of the Pool of Siloam",
+      "title_te": "సిలోయము కొలను మరియు బేతెస్ద కొలనుల లభ్యత",
+      "quote_en": "Excavated monumental 1st-century stone steps where Jesus sent the blind man to wash (John 9:7).",
+      "quote_te": "యోహాను 9:7లో యేసు గ్రుడ్డివానితో: 'సిలోయము కొలనుకు వెళ్లి కడుగుకొనుము' అని చెప్పిన కొలను మెట్లు లభించెను.",
+      "significance_en": "Discovered by archaeologists Ronny Reich and Eli Shukron while repairing a water pipe in 2004, the massive stone steps and pool matched the exact biblical descriptions in John 9, proving the Gospel writers wrote from firsthand geographical intimacy of pre-AD 70 Jerusalem.",
+      "significance_te": "2004లో పైప్‌లైన్ పనుల సందర్భములో ప్రాచీన సిలోయము కొలను బయటపడింది. సువార్తలలో వర్ణించబడిన కొలతలు, ప్రదేశాలు నూటికి నూరు శాతం వాస్తవమైనవని ఆర్కియాలజీ నిరూపించింది."
+    },
+    {
+      "id": "p52_papyrus",
+      "category": "manuscripts",
+      "author": "Rylands Library Papyrus P52 (c. AD 125)",
+      "author_te": "రైలాండ్స్ పేపిరస్ P52 (క్రీ.శ. 125 నాటి ప్రాచీన పత్రం)",
+      "source": "Discovered in Egypt, housed in Manchester, UK",
+      "title_en": "The Oldest Surviving Gospel Manuscript Fragment",
+      "title_te": "యేసు విచారణను ధ్రువీకరించే అత్యంత ప్రాచీన సువార్త పత్రం",
+      "quote_en": "Contains John 18:31-33 on one side and John 18:37-38 on the reverse ('What is truth?')",
+      "quote_te": "యోహాను 18:31-33 మరియు 37-38 వచనాలు (పిలాతు: 'సత్యమనగా ఏమిటి?') లిఖించబడియున్నవి.",
+      "significance_en": "Carbon-dated to around AD 117-138, this papyrus was found far away in Egypt, proving that the Gospel of John was already copied and widely circulated across the Roman Empire within a single generation of the eyewitnesses.",
+      "significance_te": "ఈజిప్టులో లభించిన ఈ పురాతన పత్రము క్రీ.శ. 125 నాటిది. యేసు శిష్యులు బ్రతికియున్న తరములోనే సువార్తలు రోమా సామ్రాజ్యమంతటా విస్తరించాయని మరియు శతాబ్దాలుగా ఎటువంటి మార్పులు లేకుండా భద్రపరచబడ్డాయని ఇది నిరూపిస్తుంది."
+    },
+    {
+      "id": "eyewitness_martyrdom",
+      "category": "manuscripts",
+      "author": "Historical Martyrdom of the Apostles",
+      "author_te": "అపొస్తలుల ప్రాణత్యాగము మరియు ప్రత్యక్ష సాక్ష్యము",
+      "source": "First-Century Roman & Church Records (Clement, Polycarp, Eusebius)",
+      "title_en": "The Apostles Died For What They Saw With Their Own Eyes",
+      "title_te": "తాము కళ్లారా చూసిన సత్యము కొరకు ప్రాణాలు అర్పించిన అపొస్తలులు",
+      "quote_en": "'For we have not followed cunningly devised fables, when we made known unto you the power and coming of our Lord Jesus Christ, but were eyewitnesses of his majesty' (2 Peter 1:16).",
+      "quote_te": "'మేము కల్పనాకథలను అనుసరించి ఈ సంగతులను మీకు తెలియజేయలేదు గాని ఆయన మహత్వమును కన్నులారా చూచినవారమై తెలియజేసితివి' (2 పేతురు 1:16).",
+      "significance_en": "People will die for a lie they mistakenly believe is the truth, but NOBODY dies willing tortures for a lie they KNOW they invented. Eleven of the apostles faced brutal executions (Peter crucified upside down, James beheaded, Thomas speared in India) insisting until their dying breath that they touched and dined with the risen Jesus after His public crucifixion.",
+      "significance_te": "మనుషులు తాము నమ్మిన సిద్ధాంతము కొరకు చనిపోవచ్చు, కానీ తాము స్వయంగా అల్లిన అబద్ధమని తెలిసి ఎవరూ క్రూరమైన హింసను అనుభవించరు. అపొస్తలులు (పేతురు తలక్రిందులుగా సిలువ వేయబడెను, తోమా భారతదేశములో ఈటెలతో పొడవబడెను) మరణించే చివరి క్షణం వరకు యేసు పునరుత్థానమును స్వయంగా చూశామని చాటుతూ ప్రాణాలు అర్పించారు."
+    }
+  ]
+}

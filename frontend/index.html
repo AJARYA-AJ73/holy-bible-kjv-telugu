@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Holy Bible • పవిత్ర గ్రంథము | KJV & Telugu</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#fbf8f2',
+              100: '#f5efe0',
+              200: '#ebdcc0',
+              600: '#b8860b',
+              700: '#946c05',
+              800: '#735306',
+              900: '#422c02'
+            },
+            sepia: {
+              bg: '#fbf6ea',
+              card: '#f4ede0',
+              text: '#3b2f20',
+              border: '#e6dac4'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Georgia', 'serif'],
+            telugu: ['"Noto Sans Telugu"', '"Gautami"', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts: Cinzel for headers, Noto Sans Telugu for Telugu script, Inter for clean body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-amber-50/40 text-stone-800 antialiased font-body min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-stone-900/90 backdrop-blur border-b border-amber-200/60 dark:border-stone-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2">
+      
+      <!-- Brand / Logo -->
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="switchTab('reader')">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-md">
+          <i data-lucide="book-open" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <h1 class="font-serif font-bold text-base sm:text-xl text-stone-900 dark:text-stone-100 tracking-wide">HOLY BIBLE</h1>
+            <span class="text-xs bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 font-medium px-1.5 py-0.5 rounded border border-amber-300/40">KJV • తెలుగు</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400 font-telugu">సంపూర్ణ పవిత్ర గ్రంథము</p>
+        </div>
+      </div>
+
+      <!-- Desktop Nav Tabs -->
+      <nav class="hidden md:flex items-center gap-1 bg-stone-100 dark:bg-stone-800 p-1 rounded-xl border border-stone-200/70 dark:border-stone-700">
+        <button onclick="switchTab('reader')" id="nav-reader" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="book-open-text" class="w-4 h-4"></i> Scripture Reader
+        </button>
+        <button onclick="switchTab('backstory')" id="nav-backstory" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="compass" class="w-4 h-4"></i> Backstory & Purpose
+        </button>
+        <button onclick="switchTab('emotions')" id="nav-emotions" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="heart-handshake" class="w-4 h-4"></i> Comfort Sanctuary
+        </button>
+        <button onclick="switchTab('incidents')" id="nav-incidents" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="sparkles" class="w-4 h-4"></i> Incident Finder
+        </button>
+        <button onclick="switchTab('suffering')" id="nav-suffering" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="flame" class="w-4 h-4"></i> Trials to Triumph
+        </button>
+        <button onclick="switchTab('dictionary')" id="nav-dictionary" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="spell-check" class="w-4 h-4"></i> Dictionary
+        </button>
+        <button onclick="switchTab('evidence')" id="nav-evidence" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="shield-check" class="w-4 h-4"></i> Proofs of Christ
+        </button>
+      </nav>
+
+      <!-- Quick Controls (Theme, Font Size, Mobile QR) -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button onclick="openQrModal()" class="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 dark:bg-stone-800 dark:hover:bg-stone-700 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-stone-700 text-xs font-semibold transition" title="Open on Mobile Phone">
+          <i data-lucide="smartphone" class="w-4 h-4 text-amber-600"></i>
+          <span class="hidden sm:inline">Phone Connect</span>
+        </button>
+
+        <button onclick="toggleTheme()" class="p-2 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition" title="Toggle Theme">
+          <i data-lucide="moon" id="theme-icon" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+        
+        <!-- Book Picker Trigger Button (Reader View) -->
+        <button onclick="openBookModal()" id="header-book-btn" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-medium shadow-sm transition">
+          <i data-lucide="list" class="w-4 h-4"></i>
+          <span id="header-curr-book">Genesis 1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 pb-20 md:pb-8">
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: SCRIPTURE READER VIEW -->
+    <!-- ========================================================================= -->
+    <section id="tab-reader" class="tab-content">
+      
+      <!-- Reader Controls Bar -->
+      <div class="bg-white dark:bg-stone-800/90 rounded-2xl p-3 sm:p-4 border border-amber-200/50 dark:border-stone-700 shadow-sm mb-4 flex flex-wrap items-center justify-between gap-3">
+        
+        <!-- Chapter Navigator -->
+        <div class="flex items-center gap-2">
+          <button onclick="prevChapter()" class="p-2 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition" title="Previous Chapter">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          
+          <div class="text-center px-1">
+            <h2 id="reader-title-en" class="font-serif font-bold text-sm sm:text-base text-stone-900 dark:text-stone-100">Genesis 1</h2>
+            <p id="reader-title-te" class="text-xs text-amber-700 dark:text-amber-400 font-telugu font-medium">ఆదికాండము 1</p>
+          </div>
+
+          <button onclick="nextChapter()" class="p-2 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition" title="Next Chapter">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Layout Mode & Quick Settings -->
+        <div class="flex items-center gap-2">
+          <!-- View Mode Toggle (Stacked vs Parallel) -->
+          <div class="bg-stone-100 dark:bg-stone-700 p-0.5 rounded-lg flex items-center text-xs">
+            <button onclick="setLayoutMode('stacked')" id="btn-mode-stacked" class="px-2.5 py-1 rounded-md transition font-medium">Stacked</button>
+            <button onclick="setLayoutMode('parallel')" id="btn-mode-parallel" class="px-2.5 py-1 rounded-md transition font-medium hidden sm:inline-block">Parallel</button>
+            <button onclick="setLayoutMode('en')" id="btn-mode-en" class="px-2.5 py-1 rounded-md transition font-medium">KJV</button>
+            <button onclick="setLayoutMode('te')" id="btn-mode-te" class="px-2.5 py-1 rounded-md transition font-medium font-telugu">తెలుగు</button>
+          </div>
+
+          <!-- Font Size Adjusters -->
+          <button onclick="changeFontSize(-1)" class="px-2 py-1 text-xs border rounded-md border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-700 font-bold">A-</button>
+          <button onclick="changeFontSize(1)" class="px-2 py-1 text-xs border rounded-md border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-700 font-bold">A+</button>
+        </div>
+      </div>
+
+      <!-- Context & God's Purpose Bar -->
+      <div class="mb-4 bg-gradient-to-r from-amber-50 via-orange-50/70 to-amber-50 dark:from-stone-800 dark:via-stone-800/90 dark:to-stone-800 rounded-2xl p-3 sm:p-4 border border-amber-200/80 dark:border-stone-700 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-serif font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100">Need help understanding this chapter?</h3>
+            <p class="text-[11px] sm:text-xs text-stone-600 dark:text-stone-400 font-telugu">ఈ అధ్యాయం యొక్క పూర్వ నేపథ్యం, ఎందుకు జరిగింది & దేవుని భవిష్యత్ సంకల్పం</p>
+          </div>
+        </div>
+        <button onclick="jumpToBackstory(STATE.currentBook.name_en, STATE.currentChapter)" class="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5 transition shrink-0 active:scale-95">
+          <i data-lucide="scroll-text" class="w-4 h-4"></i>
+          <span>View Backstory & God's Plan</span>
+        </button>
+      </div>
+
+      <!-- Quick Hint -->
+      <div class="mb-3 px-3 py-1.5 bg-amber-50 dark:bg-stone-800/40 rounded-lg border border-amber-200/40 dark:border-stone-700 text-[12px] text-stone-600 dark:text-stone-400 flex items-center gap-2">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-amber-600 shrink-0"></i>
+        <span><strong>Tip:</strong> Click/tap any underlined archaic word (e.g. <em>propitiation, beseech, selah</em>) to view its contextual meaning!</span>
+      </div>
+
+      <!-- Verses Container -->
+      <div id="verses-list" class="space-y-3">
+        <!-- Dynamically rendered via app.js -->
+        <div class="text-center py-12 text-stone-400">Loading scripture...</div>
+      </div>
+
+      <!-- Chapter Bottom Navigation -->
+      <div class="mt-6 flex justify-between items-center py-4 border-t border-stone-200 dark:border-stone-700">
+        <button onclick="prevChapter()" class="px-4 py-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-xs sm:text-sm font-medium hover:bg-amber-50 dark:hover:bg-stone-700 transition flex items-center gap-2">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Previous Chapter
+        </button>
+        <button onclick="nextChapter()" class="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-medium transition flex items-center gap-2 shadow-sm">
+          Next Chapter <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB: VERSE BACKSTORY & GOD'S PURPOSE (MANUAL LOOKUP) -->
+    <!-- ========================================================================= -->
+    <section id="tab-backstory" class="tab-content hidden">
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 text-white rounded-3xl p-5 sm:p-8 shadow-md mb-6 relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-amber-200 text-xs font-semibold backdrop-blur mb-3">
+            <i data-lucide="compass" class="w-3.5 h-3.5 text-amber-400"></i> Deep Biblical Insight • సందర్భ & నేపథ్య వివరణ
+          </div>
+          <h2 class="font-serif font-bold text-xl sm:text-3xl tracking-wide mb-2">Verse Backstory & God's Purpose</h2>
+          <p class="text-stone-300 text-xs sm:text-sm leading-relaxed mb-2">
+            Reading something you don't understand? Type any verse or chapter below to reveal <strong>the prior history</strong>, <strong>why it happened</strong>, and <strong>God's future redemptive thoughts</strong> behind it.
+          </p>
+          <p class="text-amber-200/90 text-xs font-telugu pt-2 border-t border-white/15 leading-relaxed">
+            మీరు చదువుతున్న వచనము అర్థం కాకపోతే, ఆ వచనం లేదా అధ్యాయాన్ని ఇక్కడ సెర్చ్ చేయండి. దాని పూర్వ నేపథ్యము, ఎందుకు జరిగింది, మరియు దేవుని భవిష్యత్ సంకల్పము మీకు స్పష్టముగా వివరించబడును.
+          </p>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="bg-white dark:bg-stone-800/90 rounded-2xl p-4 sm:p-5 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
+        <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">Type Any Verse or Chapter to Check Backstory:</label>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
+            <input type="text" id="backstory-query-input" placeholder="e.g. 'John 11', 'Genesis 37:20', 'Exodus 14', '1 Samuel 17', 'Matthew 27'..."
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              onkeydown="if(event.key === 'Enter') handleBackstorySearch()" />
+          </div>
+          <button onclick="handleBackstorySearch()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition shadow-sm flex items-center justify-center gap-2 shrink-0">
+            <i data-lucide="compass" class="w-4 h-4"></i> Explain Backstory
+          </button>
+        </div>
+
+        <!-- Quick Verse Suggestions -->
+        <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex flex-wrap gap-1.5">
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Try popular passages:</span>
+          <button onclick="queryBackstoryQuick('Genesis 37')" class="chip-btn">🌾 Genesis 37 (Joseph in Pit)</button>
+          <button onclick="queryBackstoryQuick('Exodus 14')" class="chip-btn">🌊 Exodus 14 (Red Sea Crossing)</button>
+          <button onclick="queryBackstoryQuick('1 Samuel 17')" class="chip-btn">🪨 1 Samuel 17 (David & Goliath)</button>
+          <button onclick="queryBackstoryQuick('John 11')" class="chip-btn">🌅 John 11 (Lazarus Raised)</button>
+          <button onclick="queryBackstoryQuick('Matthew 27')" class="chip-btn">✝️ Matthew 27 (Crucifixion)</button>
+          <button onclick="queryBackstoryQuick('Genesis 3')" class="chip-btn">🍎 Genesis 3 (The Fall)</button>
+        </div>
+      </div>
+
+      <!-- Results Container -->
+      <div id="backstory-results-container">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: HEART SANCTUARY (EMOTIONAL CARE & DEPRESSION GUIDANCE) -->
+    <!-- ========================================================================= -->
+    <section id="tab-emotions" class="tab-content hidden">
+      
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-amber-600 to-amber-700 text-white rounded-3xl p-5 sm:p-8 shadow-md mb-6 relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-medium backdrop-blur mb-3">
+            <i data-lucide="heart" class="w-3.5 h-3.5 fill-white"></i> Sanctuary of Grace & Comfort
+          </div>
+          <h2 class="font-serif font-bold text-xl sm:text-3xl tracking-wide mb-2">Speak Your Heart to God</h2>
+          <p class="text-amber-100 text-xs sm:text-sm leading-relaxed">
+            Whenever you are feeling depressed, anxious, brokenhearted, or lonely, God's Word has a personal promise waiting for you in English and Telugu.
+          </p>
+        </div>
+      </div>
+
+      <!-- Search & Expression Input -->
+      <div class="bg-white dark:bg-stone-800/90 rounded-2xl p-4 sm:p-5 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
+        <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-2">How are you feeling right now?</label>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
+            <input type="text" id="emotion-input" placeholder="Type here (e.g. 'I am depressed', 'anxious', 'feeling hopeless', 'brokenhearted')..."
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              onkeydown="if(event.key === 'Enter') handleEmotionSearch()" />
+          </div>
+          <button onclick="handleEmotionSearch()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition shadow-sm flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i> Find Comfort
+          </button>
+        </div>
+
+        <!-- Quick Emotion Chips -->
+        <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60">
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block mb-2">Or select your current state:</span>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="queryEmotionQuick('im depressed')" class="chip-btn">🌧️ Depressed / క్రుంగుదల</button>
+            <button onclick="queryEmotionQuick('anxious')" class="chip-btn">🌪️ Anxious / ఆందోళన</button>
+            <button onclick="queryEmotionQuick('lonely')" class="chip-btn">🥀 Lonely / ఒంటరితనము</button>
+            <button onclick="queryEmotionQuick('fear')" class="chip-btn">🛡️ Afraid / భయము</button>
+            <button onclick="queryEmotionQuick('grief')" class="chip-btn">🕊️ Grieving / దుఃఖము</button>
+            <button onclick="queryEmotionQuick('guilt')" class="chip-btn">⚡ Guilt / అపరాధభావము</button>
+            <button onclick="queryEmotionQuick('exhausted')" class="chip-btn">🔋 Weary / అలసట</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emotion Response Display Card -->
+      <div id="emotion-result-container">
+        <!-- Populated via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: INCIDENT & STORY FINDER -->
+    <!-- ========================================================================= -->
+    <section id="tab-incidents" class="tab-content hidden">
+      <div class="bg-white dark:bg-stone-800/90 rounded-3xl p-5 sm:p-7 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
+        <div class="max-w-2xl mb-4">
+          <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2 py-0.5 rounded uppercase tracking-wider">Semantic Incident Search</span>
+          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-2 mb-1">Find Any Biblical Incident or Story</h2>
+          <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+            Don't remember the chapter or verse? Simply type what you remember (e.g. <em>"man swallowed by fish"</em>, <em>"parting of red sea"</em>, <em>"water into wine"</em>).
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <i data-lucide="sparkles" class="w-4 h-4 absolute left-3.5 top-3.5 text-amber-500"></i>
+            <input type="text" id="incident-input" placeholder="Type a story you recall (e.g. 'man swallowed by a fish', 'david and goliath')..."
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              onkeydown="if(event.key === 'Enter') handleIncidentSearch()" />
+          </div>
+          <button onclick="handleIncidentSearch()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition shadow-sm flex items-center justify-center gap-2">
+            <i data-lucide="search" class="w-4 h-4"></i> Find Incidents
+          </button>
+        </div>
+
+        <!-- Quick Story Suggestions -->
+        <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex flex-wrap gap-1.5">
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Try these stories:</span>
+          <button onclick="queryIncidentQuick('man swallowed by a fish')" class="chip-btn">🐋 Jonah & The Big Fish</button>
+          <button onclick="queryIncidentQuick('parting of red sea')" class="chip-btn">🌊 Parting of the Red Sea</button>
+          <button onclick="queryIncidentQuick('david goliath')" class="chip-btn">🪨 David & Goliath</button>
+          <button onclick="queryIncidentQuick('walks on water')" class="chip-btn">🚶‍♂️ Jesus Walks on Water</button>
+          <button onclick="queryIncidentQuick('daniel lions')" class="chip-btn">🦁 Daniel in Lions' Den</button>
+          <button onclick="queryIncidentQuick('water into wine')" class="chip-btn">🍷 Water into Wine at Cana</button>
+          <button onclick="queryIncidentQuick('prodigal son')" class="chip-btn">🏃 The Prodigal Son</button>
+        </div>
+      </div>
+
+      <!-- Incidents Results List -->
+      <div id="incidents-results-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Populated via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: TRIALS TO TRIUMPH (SUFFERING & AFTERMATH ENGINE) -->
+    <!-- ========================================================================= -->
+    <section id="tab-suffering" class="tab-content hidden">
+      
+      <!-- Educational theological banner -->
+      <div class="bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 text-white rounded-3xl p-5 sm:p-8 shadow-lg mb-6">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i> The Mystery & Triumph of Suffering
+          </div>
+          <h2 class="font-serif font-bold text-xl sm:text-3xl mb-3 tracking-wide">Why Did God Let Them Suffer?</h2>
+          <p class="text-stone-300 text-xs sm:text-sm leading-relaxed mb-4">
+            Scripture reveals that God never wastes pain. Trials are the crucible in which faith is refined, character is forged, and extraordinary redemptive purposes are born. 
+            Below, explore the <strong>Redemptive Narrative Arcs</strong>—from the deep pit of despair to the glorious aftermath of blessing and restoration.
+          </p>
+
+          <!-- Character Quick Filter -->
+          <div class="flex flex-wrap gap-2 pt-2 border-t border-stone-700/60">
+            <button onclick="filterSufferingArc('all')" class="arc-filter-btn active">All Figures</button>
+            <button onclick="filterSufferingArc('joseph')" class="arc-filter-btn">Joseph / యోసేపు</button>
+            <button onclick="filterSufferingArc('job')" class="arc-filter-btn">Job / యోబు</button>
+            <button onclick="filterSufferingArc('jesus')" class="arc-filter-btn">Jesus / యేసు</button>
+            <button onclick="filterSufferingArc('daniel_and_three_friends')" class="arc-filter-btn">Daniel & Hebrew Youths</button>
+            <button onclick="filterSufferingArc('paul')" class="arc-filter-btn">Paul / పౌలు</button>
+            <button onclick="filterSufferingArc('israelites_egypt')" class="arc-filter-btn">Israelites in Egypt</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arcs Container -->
+      <div id="suffering-arcs-container" class="space-y-6">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: IN-CONTEXT DICTIONARY -->
+    <!-- ========================================================================= -->
+    <section id="tab-dictionary" class="tab-content hidden">
+      <div class="bg-white dark:bg-stone-800/90 rounded-3xl p-5 sm:p-7 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
+        <div class="max-w-2xl mb-4">
+          <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2 py-0.5 rounded uppercase tracking-wider">Theological Lexicon</span>
+          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-2 mb-1">In-Context Bible Dictionary</h2>
+          <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+            Understand archaic King James English words and complex classical Telugu biblical expressions in their exact theological context.
+          </p>
+        </div>
+
+        <div class="relative">
+          <i data-lucide="book-mark" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
+          <input type="text" id="dict-search-input" placeholder="Search a word (e.g. 'propitiation', 'firmament', 'beseech', 'quickened', 'selah')..."
+            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            oninput="handleDictFilter()" />
+        </div>
+      </div>
+
+      <!-- Dictionary List -->
+      <div id="dictionary-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Populated via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 6: HISTORICAL PROOFS & EVIDENCES OF JESUS CHRIST -->
+    <!-- ========================================================================= -->
+    <section id="tab-evidence" class="tab-content hidden">
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 text-white rounded-3xl p-5 sm:p-8 shadow-lg mb-6">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i> Historical Reality & Veracity
+          </div>
+          <h2 class="font-serif font-bold text-xl sm:text-3xl mb-3 tracking-wide">Historical Proofs & Evidences of Jesus Christ</h2>
+          <p class="text-stone-300 text-xs sm:text-sm leading-relaxed mb-3">
+            Jesus of Nazareth is not a myth or legend. His life, trial under Pontius Pilate, public execution, and the explosive eyewitness testimony of His disciples are documented by <strong>hostile Roman senators, Jewish historians, stone archaeological inscriptions, and thousands of ancient manuscripts</strong>.
+          </p>
+          <p class="text-amber-200/90 font-telugu text-xs sm:text-sm leading-relaxed border-t border-stone-700/70 pt-3">
+            యేసు క్రీస్తు చారిత్రక సత్యము: రోమన్ చరిత్రకారుల గ్రంథాలు (టాసిటస్, ప్లినీ), యూదా రికార్డులు (జోసెఫస్), మొదటి శతాబ్దపు శిలాశాసనాలు (పిలాతు శాసనం, కయప సమాధి పేటిక) మరియు ప్రాచీన పత్రాలు అందించే తిరుగులేని ఆధారాలు.
+          </p>
+
+          <!-- Evidence Categories Filter -->
+          <div class="flex flex-wrap gap-2 pt-4">
+            <button onclick="filterEvidence('all')" class="evidence-filter-btn active">All Proofs</button>
+            <button onclick="filterEvidence('roman_historians')" class="evidence-filter-btn">Roman Historians</button>
+            <button onclick="filterEvidence('jewish_sources')" class="evidence-filter-btn">Jewish Records</button>
+            <button onclick="filterEvidence('archaeology')" class="evidence-filter-btn">Archaeology</button>
+            <button onclick="filterEvidence('manuscripts')" class="evidence-filter-btn">Manuscripts & Eyewitnesses</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evidence Cards Container -->
+      <div id="evidence-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Populated via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- ========================================================================= -->
+  <!-- MODAL: CHAPTER BACKSTORY, WHY IT HAPPENED & GOD'S FUTURE PLAN -->
+  <!-- ========================================================================= -->
+  <div id="context-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 hidden" onclick="if(event.target === this) closeChapterContext()">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-amber-200 dark:border-stone-700 overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 border-b border-stone-200 dark:border-stone-800 flex items-start justify-between bg-amber-50/60 dark:bg-stone-800/80">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-amber-600 tracking-wider flex items-center gap-1">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i> Deep Chapter Insight • సందర్భ వివరణ
+          </span>
+          <h3 id="context-modal-title-en" class="font-serif font-bold text-lg sm:text-xl text-stone-900 dark:text-stone-100 mt-1">Genesis 1</h3>
+          <p id="context-modal-title-te" class="text-xs text-amber-700 dark:text-amber-400 font-telugu font-medium">ఆదికాండము 1వ అధ్యాయము</p>
+        </div>
+        <button onclick="closeChapterContext()" class="p-2 rounded-xl hover:bg-stone-200/60 dark:hover:bg-stone-700 text-stone-500 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body: 3 Pillars -->
+      <div class="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5">
+        
+        <!-- Pillar 1: The Backstory -->
+        <div class="bg-stone-50 dark:bg-stone-800/80 p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-stone-700">
+          <div class="flex items-center gap-2 text-stone-900 dark:text-stone-100 font-serif font-bold text-sm sm:text-base mb-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs font-bold shrink-0">1</span>
+            <h4>The Backstory • పూర్వ నేపథ్యం</h4>
+          </div>
+          <p id="context-backstory-en" class="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed mb-2.5"></p>
+          <p id="context-backstory-te" class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-telugu leading-relaxed pt-2 border-t border-stone-200/60 dark:border-stone-700"></p>
+        </div>
+
+        <!-- Pillar 2: Why It Happened -->
+        <div class="bg-amber-50/50 dark:bg-amber-950/20 p-4 sm:p-5 rounded-2xl border border-amber-200/60 dark:border-amber-900/40">
+          <div class="flex items-center gap-2 text-amber-900 dark:text-amber-300 font-serif font-bold text-sm sm:text-base mb-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200 flex items-center justify-center text-xs font-bold shrink-0">2</span>
+            <h4>Why It Happened • ఇది ఎందుకు జరిగింది</h4>
+          </div>
+          <p id="context-why-en" class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed mb-2.5"></p>
+          <p id="context-why-te" class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-telugu leading-relaxed pt-2 border-t border-amber-200/40 dark:border-amber-900/40"></p>
+        </div>
+
+        <!-- Pillar 3: God's Future Plan -->
+        <div class="bg-emerald-50/60 dark:bg-emerald-950/20 p-4 sm:p-5 rounded-2xl border border-emerald-200/60 dark:border-emerald-900/40">
+          <div class="flex items-center gap-2 text-emerald-900 dark:text-emerald-300 font-serif font-bold text-sm sm:text-base mb-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-200 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 flex items-center justify-center text-xs font-bold shrink-0">3</span>
+            <h4>God's Future Thoughts & Plan • దేవుని భవిష్యత్ సంకల్పం</h4>
+          </div>
+          <p id="context-plan-en" class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed mb-2.5"></p>
+          <p id="context-plan-te" class="text-xs sm:text-sm text-emerald-800 dark:text-emerald-400 font-telugu leading-relaxed pt-2 border-t border-emerald-200/40 dark:border-emerald-900/40"></p>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 bg-stone-50 dark:bg-stone-800/60 border-t border-stone-200 dark:border-stone-800 flex justify-end">
+        <button onclick="closeChapterContext()" class="px-5 py-2 rounded-xl bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 text-xs font-semibold hover:opacity-90 transition">
+          Close Context
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: BOOK & CHAPTER SELECTOR -->
+  <!-- ========================================================================= -->
+  <div id="book-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 hidden" onclick="if(event.target === this) closeBookModal()">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-4 border-b border-stone-200 dark:border-stone-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="book-marked" class="w-5 h-5 text-amber-600"></i>
+          <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Select Book & Chapter</h3>
+        </div>
+        <button onclick="closeBookModal()" class="p-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Books vs Chapters) -->
+      <div class="p-4 flex-1 overflow-y-auto">
+        
+        <!-- Step 1: Books List -->
+        <div id="modal-step-books">
+          <div class="flex items-center gap-2 mb-3">
+            <button onclick="setTestamentFilter('ALL')" id="filter-all" class="filter-tab-btn active">All 66</button>
+            <button onclick="setTestamentFilter('OT')" id="filter-ot" class="filter-tab-btn">Old Testament (పాత నిబంధన)</button>
+            <button onclick="setTestamentFilter('NT')" id="filter-nt" class="filter-tab-btn">New Testament (క్రొత్త నిబంధన)</button>
+          </div>
+          
+          <div class="relative mb-3">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-stone-400"></i>
+            <input type="text" id="modal-book-search" placeholder="Filter books in English or Telugu..."
+              class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-800 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+              oninput="filterBooksList()" />
+          </div>
+
+          <div id="modal-books-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Step 2: Chapters Grid -->
+        <div id="modal-step-chapters" class="hidden">
+          <button onclick="backToBooks()" class="mb-3 text-xs text-amber-600 font-medium flex items-center gap-1 hover:underline p-1">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Books
+          </button>
+          <div class="mb-4">
+            <h4 id="selected-book-name-en" class="font-serif font-bold text-lg text-stone-900 dark:text-stone-100">Genesis</h4>
+            <p id="selected-book-name-te" class="text-xs text-amber-600 font-telugu font-medium">ఆదికాండము</p>
+          </div>
+          <div id="modal-chapters-grid" class="grid grid-cols-5 sm:grid-cols-8 gap-2">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: IN-CONTEXT WORD DEFINITION POPOVER -->
+  <!-- ========================================================================= -->
+  <div id="dict-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="if(event.target === this) closeDictModal()">
+    <div class="bg-white dark:bg-stone-900 rounded-2xl max-w-md w-full p-5 shadow-2xl border border-amber-200/60 dark:border-stone-700">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-amber-600 tracking-wider">Contextual Meaning</span>
+          <h4 id="dict-modal-word" class="font-serif font-bold text-xl text-stone-900 dark:text-stone-100 capitalize">Propitiation</h4>
+        </div>
+        <button onclick="closeDictModal()" class="p-1.5 text-stone-400 hover:text-stone-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm">
+        <div class="bg-stone-50 dark:bg-stone-800 p-3 rounded-xl border border-stone-200/60 dark:border-stone-700">
+          <p class="font-semibold text-stone-700 dark:text-stone-300 mb-1">English Meaning:</p>
+          <p id="dict-modal-en" class="text-stone-600 dark:text-stone-400 leading-relaxed"></p>
+        </div>
+
+        <div class="bg-amber-50/50 dark:bg-amber-950/30 p-3 rounded-xl border border-amber-200/60 dark:border-amber-800/40">
+          <p class="font-semibold text-amber-900 dark:text-amber-300 font-telugu mb-1">తెలుగు వివరణ:</p>
+          <p id="dict-modal-te" class="text-amber-800 dark:text-amber-400 font-telugu leading-relaxed"></p>
+        </div>
+
+        <div id="dict-modal-context-wrapper" class="bg-emerald-50/50 dark:bg-emerald-950/30 p-3 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40">
+          <p class="font-semibold text-emerald-900 dark:text-emerald-300 mb-1">In this Chapter's Context:</p>
+          <p id="dict-modal-context" class="text-emerald-800 dark:text-emerald-400 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: MOBILE PHONE CONNECT QR CODE -->
+  <!-- ========================================================================= -->
+  <div id="qr-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="if(event.target === this) closeQrModal()">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-amber-200/60 dark:border-stone-700 text-center">
+      <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="smartphone" class="w-6 h-6"></i>
+      </div>
+      <h3 class="font-serif font-bold text-lg text-stone-900 dark:text-stone-100 mb-1">Open on Your Phone</h3>
+      <p class="text-xs text-stone-500 dark:text-stone-400 mb-4">
+        Connect your phone to the same Wi-Fi, then scan this QR code or type the link below into your phone's browser:
+      </p>
+
+      <div class="bg-white p-3 rounded-2xl border border-stone-200 shadow-sm inline-block mb-4">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.31.180:8000" alt="QR Code" class="w-44 h-44 mx-auto rounded-lg" />
+      </div>
+
+      <div class="bg-amber-50 dark:bg-stone-800 p-3 rounded-xl border border-amber-200 dark:border-stone-700 mb-4 text-left">
+        <span class="text-[10px] uppercase font-bold text-amber-700 dark:text-amber-400 block mb-0.5">Mobile Phone URL:</span>
+        <div class="flex items-center justify-between gap-1">
+          <code class="text-xs font-mono font-bold text-stone-800 dark:text-stone-200 select-all break-all">http://192.168.31.180:8000</code>
+          <button onclick="navigator.clipboard.writeText('http://192.168.31.180:8000'); alert('Link copied!')" class="text-xs text-amber-700 font-semibold hover:underline shrink-0">Copy</button>
+        </div>
+      </div>
+
+      <button onclick="closeQrModal()" class="w-full py-2.5 rounded-xl bg-amber-600 text-white text-xs font-semibold hover:bg-amber-700 transition shadow-sm">
+        Done
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE BOTTOM NAVIGATION (Optimized for thumb reach on smartphones) -->
+  <!-- ========================================================================= -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-stone-900/95 backdrop-blur border-t border-stone-200 dark:border-stone-800 px-2 py-2 pb-[max(env(safe-area-inset-bottom),8px)] flex justify-around items-center shadow-lg">
+    <button onclick="switchTab('reader')" id="mob-reader" class="mob-nav-btn active min-w-[46px] min-h-[44px]">
+      <i data-lucide="book-open" class="w-5 h-5"></i>
+      <span>Read</span>
+    </button>
+    <button onclick="switchTab('backstory')" id="mob-backstory" class="mob-nav-btn min-w-[46px] min-h-[44px]">
+      <i data-lucide="compass" class="w-5 h-5"></i>
+      <span>Context</span>
+    </button>
+    <button onclick="switchTab('emotions')" id="mob-emotions" class="mob-nav-btn min-w-[46px] min-h-[44px]">
+      <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+      <span>Comfort</span>
+    </button>
+    <button onclick="switchTab('incidents')" id="mob-incidents" class="mob-nav-btn min-w-[46px] min-h-[44px]">
+      <i data-lucide="sparkles" class="w-5 h-5"></i>
+      <span>Stories</span>
+    </button>
+    <button onclick="switchTab('suffering')" id="mob-suffering" class="mob-nav-btn min-w-[54px] min-h-[44px]">
+      <i data-lucide="flame" class="w-5 h-5"></i>
+      <span>Suffering</span>
+    </button>
+    <button onclick="switchTab('dictionary')" id="mob-dictionary" class="mob-nav-btn min-w-[48px] min-h-[44px]">
+      <i data-lucide="spell-check" class="w-5 h-5"></i>
+      <span>Vocab</span>
+    </button>
+    <button onclick="switchTab('evidence')" id="mob-evidence" class="mob-nav-btn min-w-[48px] min-h-[44px]">
+      <i data-lucide="shield-check" class="w-5 h-5"></i>
+      <span>Proofs</span>
+    </button>
+  </nav>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* Global Font & Theme Enhancements */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-telugu {
+  font-family: 'Noto Sans Telugu', 'Gautami', sans-serif;
+}
+
+/* Nav & Tab Buttons */
+.tab-btn {
+  color: #78716c;
+}
+.dark .tab-btn {
+  color: #a8a29e;
+}
+.tab-btn.active {
+  background-color: #ffffff;
+  color: #b45309;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.dark .tab-btn.active {
+  background-color: #292524;
+  color: #f59e0b;
+}
+
+/* Mobile Nav Buttons */
+.mob-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  color: #78716c;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  border-radius: 8px;
+}
+.dark .mob-nav-btn {
+  color: #a8a29e;
+}
+.mob-nav-btn.active {
+  color: #b45309;
+  transform: translateY(-1px);
+}
+.dark .mob-nav-btn.active {
+  color: #f59e0b;
+}
+
+/* Chip Buttons */
+.chip-btn {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  transition: all 0.15s ease;
+}
+.chip-btn:hover {
+  background-color: #fde68a;
+  transform: scale(1.02);
+}
+.dark .chip-btn {
+  background-color: #451a03;
+  color: #fde68a;
+  border-color: #78350f;
+}
+.dark .chip-btn:hover {
+  background-color: #78350f;
+}
+
+/* Filter Tab Buttons in Modal */
+.filter-tab-btn {
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #e7e5e4;
+  color: #78716c;
+}
+.filter-tab-btn.active {
+  background-color: #d97706;
+  color: #ffffff;
+  border-color: #d97706;
+}
+.dark .filter-tab-btn {
+  border-color: #44403c;
+  color: #a8a29e;
+}
+.dark .filter-tab-btn.active {
+  background-color: #d97706;
+  color: #ffffff;
+}
+
+/* Arc Filter Buttons */
+.arc-filter-btn, .evidence-filter-btn {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e7e5e4;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.15s ease;
+}
+.arc-filter-btn:hover, .arc-filter-btn.active,
+.evidence-filter-btn:hover, .evidence-filter-btn.active {
+  background-color: #d97706;
+  color: #ffffff;
+  border-color: #f59e0b;
+}
+
+/* Archaic word highlight */
+.archaic-word {
+  border-bottom: 1.5px dotted #d97706;
+  cursor: pointer;
+  color: #b45309;
+  transition: background-color 0.15s ease;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.archaic-word:hover {
+  background-color: #fef3c7;
+}
+.dark .archaic-word {
+  border-bottom-color: #f59e0b;
+  color: #fbbf24;
+}
+.dark .archaic-word:hover {
+  background-color: #451a03;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #57534e;
+}
+
+/* Verse text sizing */
+.verse-font-sm {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.verse-font-base {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.verse-font-lg {
+  font-size: 17px;
+  line-height: 1.8;
+}
+.verse-font-xl {
+  font-size: 19px;
+  line-height: 1.9;
+}

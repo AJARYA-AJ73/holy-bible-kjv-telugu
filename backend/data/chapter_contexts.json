@@ -1,0 +1,130 @@
+{
+  "contexts": [
+    {
+      "book": "Genesis",
+      "chapter": 1,
+      "title_en": "The Creation of the Universe and Mankind",
+      "title_te": "విశ్వము మరియు మానవుని సృష్టి",
+      "backstory": {
+        "summary_en": "Before the beginning of time, space, or matter, only the eternal, self-existent Triune God existed. The universe was not an accident; it was purposefully birthed from nothing ('ex nihilo') through the sovereign spoken Word of God.",
+        "summary_te": "కాలము, పదార్థము లేదా అంతరిక్షము ఏర్పడక మునుపు, స్వయంభూవుడైన త్రియేక దేవుడు మాత్రమే నిత్యుడై యుండెను. విశ్వము అనుకోకుండా సంభవించినది కాదు; దేవుని జీవముగల వాక్కు ద్వారా శూన్యములో నుండి సమస్తము సృజించబడెను."
+      },
+      "why_it_happened": {
+        "summary_en": "God desired to share His infinite goodness, beauty, and love with sentient creation. Unlike pagan creation myths of cosmic warfare, Genesis reveals a completely orderly, loving Creator who crowned humanity as His image-bearers (Imago Dei) to steward the earth.",
+        "summary_te": "దేవుడు తన అనంతమైన ప్రేమను, పరిశుద్ధతను సృష్టితో పంచుకోవాలని సంకల్పించెను. అన్యుల కల్పిత కథలవలె యుద్ధాల వల్ల కాక, పరమ దేవుడు క్రమముగా భూమిని అలంకరించి, మానవుని తన స్వస్వరూపములో సృజించి భూమిపై అధికారిగా నియమించెను."
+      },
+      "gods_future_plan": {
+        "summary_en": "Genesis 1 lays the absolute foundation for the entire biblical story. In God's eternal mind, creation is the theater for redemption. Even before the foundation of the world, God planned for Christ (the Word through whom all was made, John 1:1-3) to enter this creation to redeem mankind and ultimately create a New Heaven and a New Earth (Revelation 21).",
+        "summary_te": "ఆదికాండము 1వ అధ్యాయము సమస్త బైబిల్ గ్రంథమునకు పునాది. జగత్తు పునాది వేయబడకమునుపే, సమస్తమును సృష్టించిన ఆ వాక్యమే (యేసు క్రీస్తు) ఈ లోకములోనికి వచ్చి నశించిన మానవుని రక్షించి, అంత్య దినమున నూతన ఆకాశమును, నూతన భూమిని నిర్మించాలని దేవుడు తన భవిష్యత్ సంకల్పములో నిర్ణయించెను (యోహాను 1:1-3, ప్రకటన 21)."
+      }
+    },
+    {
+      "book": "Genesis",
+      "chapter": 3,
+      "title_en": "The Fall of Man and the First Promise of the Savior",
+      "title_te": "మానవుని పతనము మరియు రక్షకుని గురించిన తొలి వాగ్దానము",
+      "backstory": {
+        "summary_en": "Adam and Eve lived in untainted harmony with God in the Garden of Eden, possessing genuine moral free will and given only one protective restriction: not to eat from the Tree of the Knowledge of Good and Evil.",
+        "summary_te": "ఆదాము, హవ్వలు ఏదెను వనములో దేవునితో అన్యోన్య సహవాసములో జీవించిరి. వారికి స్వేచ్ఛా చిత్తము ఇవ్వబడి, కేవలం ఒకే ఆజ్ఞ ఇవ్వబడెను: మంచి చెడ్డల తెలివినిచ్చు వృక్ష ఫలములను తినకూడదు."
+      },
+      "why_it_happened": {
+        "summary_en": "Satan, disguised as a serpent, tempted Eve to doubt God's goodness and word ('Did God really say?'), tempting them to become their own gods. Both Adam and Eve ate, ushering spiritual death, shame, fear, and cosmic curse into the human race.",
+        "summary_te": "సర్ప రూపములో వచ్చిన సాతాను దేవుని మంచితనమును, వాక్కును శంకించేలా చేసి, మీరే దేవునివలె ఉంటారని మోసగించెను. ఆదాము హవ్వలు తిని అవిధేయత చూపినప్పుడు పాపము, సిగ్గు, భయము మరియు మరణము మానవాళిలోనికి ప్రవేశించెను."
+      },
+      "gods_future_plan": {
+        "summary_en": "Instead of destroying humanity on the spot, God made animal coats of skins (the first blood shedding for sin) and delivered the 'Protoevangelium' (Genesis 3:15): God promised that the seed of the woman (Christ, virgin-born) would eventually crush the head of the serpent on the Cross!",
+        "summary_te": "దేవుడు మానవుని నాశనము చేయక, జంతు చర్మములను తొడిగించి (పాపమునకు ప్రాయశ్చిత్తముగా రక్తం చిందింపబడుటకు సూచన) ఆది సువార్తను (ఆది 3:15) ప్రకటించెను: స్త్రీ సంతానముగా రాబోవు క్రీస్తు సాతాను తలను సిలువపై శాశ్వతముగా చితకద్రొక్కునని దేవుడు భవిష్యత్ ప్రణాళికను వెల్లడించెను!"
+      }
+    },
+    {
+      "book": "Genesis",
+      "chapter": 37,
+      "title_en": "Joseph Betrayed and Sold by His Jealous Brothers",
+      "title_te": "యోసేపు సహోదరుల అసూయ మరియు బానిసగా అమ్మబడుట",
+      "backstory": {
+        "summary_en": "Jacob favored Joseph above all his sons because he was born of his beloved Rachel, giving him an ornate coat of many colors. Joseph also received divine prophetic dreams of his brothers and parents bowing down before him, inflaming intense fraternal jealousy.",
+        "summary_te": "యాకోబు రాహేలు కుమారుడైన యోసేపును మిగిలినవారి కంటే ఎక్కువగా ప్రేమించి విచిత్రమైన నిలువుటంగీని కుట్టించెను. అంతేకాక యోసేపు కన్న దైవిక కలలు తన సహోదరులు తన ఎదుట సాగిలపడుదురని తెలియజేయగా, సహోదరుల గుండెల్లో ఈర్ష్య రగిలెను."
+      },
+      "why_it_happened": {
+        "summary_en": "When Joseph was sent to check on his brothers in Dothan, their simmering resentment erupted into murderous conspiracy. Reuben and Judah persuaded them not to kill him, so they stripped his coat, threw him into a dry cistern, and sold him to Midianite traders for 20 pieces of silver.",
+        "summary_te": "దోతానులో గొర్రెలను మేపుచున్న అన్నల క్షేమము కనుగొనుటకు యోసేపు వెళ్లినప్పుడు, వారి అసూయ పగగా మారి అతనిని చంపాలని చూచిరి. రూబేను, యూదాల చొరవతో చంపకుండా గోతిలో పడద్రోసి, 20 వెండి నాణేలకు ఇష్మాయేలీయుల వర్తకులకు బానిసగా అమ్మివేసిరి."
+      },
+      "gods_future_plan": {
+        "summary_en": "God was invisibly maneuvering the pieces of history. In order to save the entire Middle East—and the covenant family of Abraham—from the catastrophic 7-year drought decades later, God had to get Joseph to Egypt. The betrayal was human evil, but God was guiding Joseph to Pharaoh's court to save millions of souls (Genesis 50:20).",
+        "summary_te": "మానవ దృష్టికి ఇది మోసమైనను, దేవుని భవిష్యత్ ఆలోచన ఎంతో ఉన్నతమైనది. రాబోవు 7 ఏళ్ల మహా కరవులో లక్షలాది ప్రాణాలను మరియు అబ్రాహాము వంశమును కాపాడటానికి యోసేపును ఐగుప్తునకు చేర్చడమే దేవుని ప్రణాళిక. సహోదరులు కీడును ఉద్దేశించినను, దేవుడు దానిని సమస్త మానవాళి మేలు కొరకై నడిపించెను (ఆది 50:20)."
+      }
+    },
+    {
+      "book": "Exodus",
+      "chapter": 14,
+      "title_en": "The Miracle of the Parting of the Red Sea",
+      "title_te": "ఎర్ర సముద్రము రెండు పాయలుగా చీల్చబడుట",
+      "backstory": {
+        "summary_en": "After 400 years of crushing slavery and 10 devastating plagues on Egypt's pantheon of gods, Pharaoh finally released Israel. God intentionally guided the Israelites through a route trapped between mountain ridges and the shores of the Red Sea.",
+        "summary_te": "400 ఏళ్ల బానిసత్వము మరియు ఐగుప్తు దేవతలను నాశనము చేసిన 10 తెగుళ్ల తరువాత ఫరో ఇశ్రాయేలీయులను విడిచిపెట్టెను. అయితే దేవుడు వారిని పర్వతాలకు, ఎర్ర సముద్రమునకు మధ్యగల సన్నని మార్గములోనికి నడిపించెను."
+      },
+      "why_it_happened": {
+        "summary_en": "Pharaoh had a change of heart and pursued them with 600 select war chariots to re-enslave or slaughter them. Trapped against the water with nowhere to retreat, the Israelites panicked in sheer terror.",
+        "summary_te": "ఫరో మనస్సు కఠినమై 600 శ్రేష్ఠమైన రథములతో ఇశ్రాయేలీయులను మళ్లీ బానిసలుగా చేయుటకు వెంటాడెను. ముందు సముద్రము, వెనుక సైన్యము ఉండటంతో ప్రజలు మహా భయముతో మొఱ్ఱపెట్టిరి."
+      },
+      "gods_future_plan": {
+        "summary_en": "God allowed this trap to permanently shatter the military superpower of Egypt once and for all, demonstrating that His covenant people never fight by human swords, but by the LORD's arm. Furthermore, the crossing of the Red Sea became the supreme Old Testament foreshadowing of baptism—leaving the old life of slavery behind to walk in resurrection liberty.",
+        "summary_te": "ఐగుప్తు సైనిక గర్వమును సమూలముగా నాశనము చేయడానికి మరియు 'యెహోవాయే మీ పక్షమున యుద్ధము చేయును' అని నిరూపించడానికి దేవుడు ఈ పరిస్థితిని కల్పించెను. పాత బానిసత్వమును విడిచి ఆరిన నేలమీద నడచుట అనేది నూతన నిబంధన బాప్తిస్మమునకు మరియు పాపమునుండి విముక్తికి ఛాయారూపమై యున్నది."
+      }
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 17,
+      "title_en": "David and Goliath: The Battle Belongs to the LORD",
+      "title_te": "దావీదు మరియు గొల్యాతు: యుద్ధము యెహోవాదే",
+      "backstory": {
+        "summary_en": "King Saul and the demoralized army of Israel were paralyzed by fear in the Valley of Elah as the 9-foot Philistine champion Goliath blasphemed the God of Israel morning and evening for 40 days.",
+        "summary_te": "ఏలా లోయలో సౌలు రాజు మరియు ఇశ్రాయేలు సైన్యమంతయు 9 అడుగుల ఎత్తున్న ఫిలిష్తీయుడైన గొల్యాతు 40 దినాలు దేవుని దూషిస్తూ సవాలు చేస్తుంటే భయముతో వణుకుచుండిరి."
+      },
+      "why_it_happened": {
+        "summary_en": "Jesse sent young teenage David, a shepherd boy, to carry bread and roasted grain to his older brothers. When David heard Goliath mocking the armies of the Living God, holy indignation ignited in him: 'Who is this uncircumcised Philistine that he should defy the armies of the living God?'",
+        "summary_te": "గొర్రెలు కాసే చిన్నవాడైన దావీదు తన అన్నలకు ఆహారము తీసుకువెళ్లినప్పుడు, జీవముగల దేవుని సైన్యమును గొల్యాతు నిందించుట వినెను. దైవిక పౌరుషముతో 'జీవముగల దేవుని సైన్యములను తిరస్కరించుటకు ఈ సున్నతిలేని ఫిలిష్తీయుడు ఎంతటివాడు?' అని ముందుకు వచ్చెను."
+      },
+      "gods_future_plan": {
+        "summary_en": "God was using a nine-foot giant to catapult an unknown shepherd boy into national prominence as Israel's true anointed king. David's victory with a simple sling foreshadowed Christ defeating the ultimate giant—Satan, sin, and death—not with carnal weapons, but through total surrender to God.",
+        "summary_te": "ఒక అజ్ఞాత గొర్రెల కాపరిని ఇశ్రాయేలు భవిష్యత్ రాజుగా వెలుగులోనికి తేవడమే దేవుని సంకల్పం. మానవ ఆయుధాలు లేకుండా ఒక్క రాతితో దావీదు సాధించిన విజయము, సిలువపై క్రీస్తు సాతాను అనే రాక్షసుని జయించి మానవాళికి రక్షణ తెచ్చుటకు సూచనగా నిలిచింది."
+      }
+    },
+    {
+      "book": "John",
+      "chapter": 11,
+      "title_en": "The Raising of Lazarus: The Resurrection and the Life",
+      "title_te": "లాజరు పునరుత్థానము: నేనే పునరుత్థానమును జీవమును",
+      "backstory": {
+        "summary_en": "Lazarus of Bethany was a close, beloved friend of Jesus along with his sisters Mary and Martha. When Lazarus fell terminally ill, the sisters sent an urgent message expecting Jesus to rush and heal him.",
+        "summary_te": "బేతనియ వాసియైన లాజరు, మరియు అతని సహోదరీలైన మరియ, మార్తలు యేసుకు ప్రియమైన స్నేహితులు. లాజరు తీవ్ర జబ్బుపడినప్పుడు, యేసు వచ్చి బాగుచేస్తాడని నమ్మకముతో వారు వర్తమానము పంపిరి."
+      },
+      "why_it_happened": {
+        "summary_en": "Surprisingly, Jesus stayed two days longer where He was, allowing Lazarus to die and be in the tomb four days until decay set in. Jewish tradition held that a spirit hovered near a corpse for three days, but by the fourth day, decomposition made resurrection undeniably supernatural.",
+        "summary_te": "యేసు వెంటనే వెళ్లకుండా ఉద్దేశపూర్వకంగా రెండు దినాలు ఆలస్యము చేసెను. లాజరు చనిపోయి సమాధిలో నాలుగు దినాలు గడిచిన తరువాత వచ్చెను. యూదా సంప్రదాయం ప్రకారం 4వ రోజున శరీరము కుళ్ళిపోవును, కాబట్టి అక్కడ జరిగే అద్భుతము దైవికమైనదేనని రుజువగును."
+      },
+      "gods_future_plan": {
+        "summary_en": "Jesus delayed so that His followers would see a miracle far greater than preventing death—He revealed that He possesses power OVER death itself! By crying 'Lazarus, come forth!', Jesus was declaring to all ages that He is the Resurrection and the Life, preparing the disciples to believe in His own resurrection on Easter Sunday.",
+        "summary_te": "కేవలం స్వస్థత కంటే మరణముపై అధికారము గల దేవుని మహిమను చూపించడమే యేసు సంకల్పం! 'నేనే పునరుత్థానమును జీవమునై యున్నాను' అని చాటుతూ, స్వయంగా తానే మూడవ దినమున మరణమును జయించి లేవబోవు పునరుత్థానమునకు ఇది తిరుగులేని రుజువుగా నిలిచింది."
+      }
+    },
+    {
+      "book": "Matthew",
+      "chapter": 27,
+      "title_en": "The Crucifixion and Death of Jesus Christ",
+      "title_te": "యేసు క్రీస్తు సిలువ మరణము",
+      "backstory": {
+        "summary_en": "Rejected by religious leaders who feared losing power, betrayed by Judas for 30 silver coins, and condemned by a cowardly Pontius Pilate who washed his hands, Jesus was led to Golgotha to be crucified.",
+        "summary_te": "మతాధికారుల అసూయ, యూదా చేసిన ద్రోహము, మరియు పిలాతు చేతులు కడుగుకొని చేసిన అన్యాయపు తీర్పు వలన యేసు కల్వరి కొండపై సిలువ వేయబడుటకు తీసికొనిపోబడెను."
+      },
+      "why_it_happened": {
+        "summary_en": "Human jealousy and Roman brutality thought they were putting an end to a Galilean rabbi. In spiritual reality, Jesus laid down His life freely as the unblemished Lamb of God (John 10:18), fulfilling hundreds of Old Testament prophecies (Isaiah 53, Psalm 22).",
+        "summary_te": "మానవుల దుష్టత్వం ఆయనను చంపామని భావించెను, కానీ దేవుని లేఖనాల ప్రకారము సమస్త లోక పాపములను తనపై మోసుకొని ప్రాయశ్చిత్త బలిగా అర్పించుకొనుటకు యేసు స్వచ్ఛందముగా తన ప్రాణమును పెట్టెను."
+      },
+      "gods_future_plan": {
+        "summary_en": "At the precise moment Jesus cried 'It is finished!', the massive 60-foot veil in the Temple tore from top to bottom! God permanently opened direct access into the Holy of Holies for every human being through the blood of Christ, purchasing eternal redemption for everyone who believes.",
+        "summary_te": "సిలువపై 'సమాప్తమైనది' అని యేసు ప్రాణము విడిచిన క్షణమున, దేవాలయపు తెర పైనుండి క్రిందివరకు రెండుగా చినిగెను! దేవుని సన్నిధిలోనికి చేరడానికి సమస్త మానవాళికి మార్గము తెరవబడెను. ఆయన మరణము ద్వారా నిత్య రక్షణ మనకు అనుగ్రహింపబడెను."
+      }
+    }
+  ]
+}
