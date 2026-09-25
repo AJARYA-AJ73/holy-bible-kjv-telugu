@@ -287,10 +287,19 @@
 
         <!-- Quick Emotion Chips -->
         <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60">
-          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block mb-2">Or select your current state:</span>
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block mb-2">Or select your current state / జీవిత పరిస్థితులు:</span>
           <div class="flex flex-wrap gap-1.5">
             <button onclick="queryEmotionQuick('im angry on my friend')" class="chip-btn">💔 Angry at Friend / స్నేహితునిపై కోపం</button>
             <button onclick="queryEmotionQuick('angry')" class="chip-btn">😡 Anger & Wrath / కోపము</button>
+            <button onclick="queryEmotionQuick('money')" class="chip-btn">💰 Financial Crisis & Debt / అప్పుల బాధ</button>
+            <button onclick="queryEmotionQuick('sick')" class="chip-btn">🏥 Sickness & Healing / స్వస్థత</button>
+            <button onclick="queryEmotionQuick('rejected')" class="chip-btn">🥀 Rejection & Betrayal / మోసగింపబడుట</button>
+            <button onclick="queryEmotionQuick('give up')" class="chip-btn">🌧️ Hopeless & Give Up / నిరాశ</button>
+            <button onclick="queryEmotionQuick('waiting')" class="chip-btn">⏳ Waiting on God / నిరీక్షణ</button>
+            <button onclick="queryEmotionQuick('confused')" class="chip-btn">🧭 Confusion & Guidance / నడిపింపు</button>
+            <button onclick="queryEmotionQuick('peace')" class="chip-btn">🛌 Peace & Restful Sleep / ప్రశాంతత</button>
+            <button onclick="queryEmotionQuick('grateful')" class="chip-btn">🙌 Praise & Gratitude / కృతజ్ఞత</button>
+            <button onclick="queryEmotionQuick('addicted')" class="chip-btn">🔗 Deliverance from Addiction / విడుదల</button>
             <button onclick="queryEmotionQuick('im depressed')" class="chip-btn">🌧️ Depressed / క్రుంగుదల</button>
             <button onclick="queryEmotionQuick('anxious')" class="chip-btn">🌪️ Anxious / ఆందోళన</button>
             <button onclick="queryEmotionQuick('lonely')" class="chip-btn">🥀 Lonely / ఒంటరితనము</button>
@@ -335,16 +344,21 @@
 
         <!-- Quick Story Suggestions -->
         <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex flex-wrap gap-1.5">
-          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Explore major accounts & topics:</span>
+          <span class="text-[11px] font-medium text-stone-400 uppercase tracking-wider block w-full mb-1">Explore major accounts & topics / ప్రధాన సంఘటనలు:</span>
           <button onclick="queryIncidentQuick('jacob story')" class="chip-btn">🌾 Jacob's Story (యాకోబు చరిత్ర)</button>
+          <button onclick="queryIncidentQuick('joseph')" class="chip-btn">👑 Joseph in Egypt (యోసేపు జీవితం)</button>
           <button onclick="queryIncidentQuick('witchcraft')" class="chip-btn">🔮 Witchcraft & Saul (మంత్రవిద్య)</button>
-          <button onclick="queryIncidentQuick('man swallowed by a fish')" class="chip-btn">🐋 Jonah & The Big Fish</button>
-          <button onclick="queryIncidentQuick('parting of red sea')" class="chip-btn">🌊 Parting of the Red Sea</button>
-          <button onclick="queryIncidentQuick('david goliath')" class="chip-btn">🪨 David & Goliath</button>
-          <button onclick="queryIncidentQuick('walks on water')" class="chip-btn">🚶‍♂️ Jesus Walks on Water</button>
-          <button onclick="queryIncidentQuick('daniel lions')" class="chip-btn">🦁 Daniel in Lions' Den</button>
-          <button onclick="queryIncidentQuick('water into wine')" class="chip-btn">🍷 Water into Wine</button>
-          <button onclick="queryIncidentQuick('prodigal son')" class="chip-btn">🏃 The Prodigal Son</button>
+          <button onclick="queryIncidentQuick('elijah')" class="chip-btn">🔥 Elijah at Carmel (ఏలీయా అగ్ని)</button>
+          <button onclick="queryIncidentQuick('daniel lions')" class="chip-btn">🦁 Daniel in Lions' Den (దానియేలు)</button>
+          <button onclick="queryIncidentQuick('david goliath')" class="chip-btn">🪨 David & Goliath (దావీదు గొల్యాతు)</button>
+          <button onclick="queryIncidentQuick('parting of red sea')" class="chip-btn">🌊 Parting of Red Sea (ఎర్ర సముద్రము)</button>
+          <button onclick="queryIncidentQuick('man swallowed by a fish')" class="chip-btn">🐋 Jonah & Big Fish (యోనా చేప)</button>
+          <button onclick="queryIncidentQuick('zacchaeus')" class="chip-btn">🌳 Zacchaeus (జక్కయ్య)</button>
+          <button onclick="queryIncidentQuick('feeding 5000')" class="chip-btn">🍞 Feeding 5,000 (5000 మందికి భోజనం)</button>
+          <button onclick="queryIncidentQuick('walks on water')" class="chip-btn">🚶‍♂️ Walks on Water (నీటిపై నడక)</button>
+          <button onclick="queryIncidentQuick('prodigal son')" class="chip-btn">🏃 Prodigal Son (తప్పిపోయిన కుమారుడు)</button>
+          <button onclick="queryIncidentQuick('resurrection')" class="chip-btn">✝️ Resurrection of Jesus (పునరుత్థానము)</button>
+          <button onclick="queryIncidentQuick('pentecost')" class="chip-btn">⚡ Day of Pentecost (పెంతెకొస్తు)</button>
         </div>
       </div>
 
@@ -395,25 +409,65 @@
     <!-- ========================================================================= -->
     <section id="tab-dictionary" class="tab-content hidden">
       <div class="bg-white dark:bg-stone-800/90 rounded-3xl p-5 sm:p-7 border border-amber-200/60 dark:border-stone-700 shadow-sm mb-6">
-        <div class="max-w-2xl mb-4">
-          <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2 py-0.5 rounded uppercase tracking-wider">Theological Lexicon</span>
-          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-2 mb-1">In-Context Bible Dictionary</h2>
+        <div class="max-w-3xl mb-4">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <span class="text-xs bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Exhaustive KJV Lexicon & Concordance</span>
+            <span class="text-xs bg-stone-100 dark:bg-stone-700 text-stone-600 dark:text-stone-300 font-semibold px-2.5 py-0.5 rounded-full">13,255 Vocabulary Words</span>
+          </div>
+          <h2 class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 mt-1 mb-1">In-Context Bible Dictionary & Lexicon</h2>
           <p class="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
-            Understand archaic King James English words and complex classical Telugu biblical expressions in their exact theological context.
+            Look up <strong>every single word present in the King James Version</strong> with occurrence counts across the Old & New Testaments, theological meanings, Telugu translations, and bilingual verse concordance.
           </p>
         </div>
 
-        <div class="relative">
-          <i data-lucide="book-mark" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
-          <input type="text" id="dict-search-input" placeholder="Search a word (e.g. 'propitiation', 'firmament', 'beseech', 'quickened', 'selah')..."
-            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
-            oninput="handleDictFilter()" />
+        <!-- Search Bar -->
+        <div class="relative mb-3">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400"></i>
+          <input type="text" id="dict-search-input" placeholder="Search any of 13,255 words (e.g. 'propitiation', 'cherubim', 'chariot', 'grace', 'firmament', 'sword')..."
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 dark:bg-stone-900 text-stone-800 dark:text-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            oninput="handleDictSearchInput()" />
+          <button id="dict-clear-btn" onclick="clearDictSearch()" class="absolute right-3 top-2.5 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 hidden">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-1.5 mb-3">
+          <button onclick="setDictCategory('all')" class="dict-cat-btn active">All Words (అన్ని)</button>
+          <button onclick="setDictCategory('Theological Doctrines')" class="dict-cat-btn">Theological Doctrines</button>
+          <button onclick="setDictCategory('Archaic KJV Terms')" class="dict-cat-btn">Archaic KJV Terms</button>
+          <button onclick="setDictCategory('Names of God')" class="dict-cat-btn">Names of God</button>
+          <button onclick="setDictCategory('Covenant & Law')" class="dict-cat-btn">Covenant & Law</button>
+          <button onclick="setDictCategory('Sacrifices & Artifacts')" class="dict-cat-btn">Sacrifices & Artifacts</button>
+          <button onclick="setDictCategory('Biblical Life & Worship')" class="dict-cat-btn">Life & Worship</button>
+          <button onclick="setDictCategory('Prophecy & Eschatology')" class="dict-cat-btn">Prophecy</button>
+        </div>
+
+        <!-- Alphabet Quick Bar (A-Z) -->
+        <div class="pt-2 border-t border-stone-100 dark:border-stone-700/60">
+          <span class="text-[10px] uppercase font-bold text-stone-400 tracking-wider block mb-1.5">Alphabetical Index (A - Z):</span>
+          <div id="dict-alpha-bar" class="flex flex-wrap gap-1">
+            <!-- Populated via JavaScript with A-Z buttons -->
+          </div>
+        </div>
+
+        <!-- Status / Count Bar -->
+        <div class="mt-3 pt-2 border-t border-stone-100 dark:border-stone-700/60 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+          <span id="dict-status-text">Loading Bible lexicon...</span>
+          <span class="text-[11px] text-amber-600 dark:text-amber-400 font-medium">Click any word card to view full concordance verses</span>
         </div>
       </div>
 
       <!-- Dictionary List -->
       <div id="dictionary-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Populated via JavaScript -->
+      </div>
+
+      <!-- Load More Button -->
+      <div id="dict-load-more-container" class="mt-6 text-center hidden">
+        <button onclick="loadMoreDictionaryWords()" class="px-6 py-2.5 rounded-xl bg-amber-50 dark:bg-stone-800 hover:bg-amber-100 dark:hover:bg-stone-700 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-stone-700 text-xs font-semibold transition active:scale-95 shadow-xs">
+          Load More Words / మరిన్ని పదాలు
+        </button>
       </div>
     </section>
 
@@ -580,32 +634,64 @@
   <!-- ========================================================================= -->
   <!-- MODAL: IN-CONTEXT WORD DEFINITION POPOVER -->
   <!-- ========================================================================= -->
-  <div id="dict-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="if(event.target === this) closeDictModal()">
-    <div class="bg-white dark:bg-stone-900 rounded-2xl max-w-md w-full p-5 shadow-2xl border border-amber-200/60 dark:border-stone-700">
-      <div class="flex items-start justify-between mb-3">
+  <div id="dict-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 hidden" onclick="if(event.target === this) closeDictModal()">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-amber-200/80 dark:border-stone-700 overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-5 border-b border-stone-200 dark:border-stone-800 flex items-start justify-between bg-amber-50/60 dark:bg-stone-800/80">
         <div>
-          <span class="text-[10px] uppercase font-bold text-amber-600 tracking-wider">Contextual Meaning</span>
-          <h4 id="dict-modal-word" class="font-serif font-bold text-xl text-stone-900 dark:text-stone-100 capitalize">Propitiation</h4>
+          <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span id="dict-modal-cat" class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">Theological Lexicon</span>
+            <span id="dict-modal-stats" class="text-[10px] font-semibold text-stone-600 dark:text-stone-300 bg-white/80 dark:bg-stone-700 px-2 py-0.5 rounded-full">Occurrences in KJV</span>
+          </div>
+          <h4 id="dict-modal-word" class="font-serif font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 capitalize">Propitiation</h4>
         </div>
-        <button onclick="closeDictModal()" class="p-1.5 text-stone-400 hover:text-stone-600">
+        <button onclick="closeDictModal()" class="p-2 rounded-xl hover:bg-stone-200/60 dark:hover:bg-stone-700 text-stone-500 transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="space-y-3 text-xs sm:text-sm">
-        <div class="bg-stone-50 dark:bg-stone-800 p-3 rounded-xl border border-stone-200/60 dark:border-stone-700">
-          <p class="font-semibold text-stone-700 dark:text-stone-300 mb-1">English Meaning:</p>
-          <p id="dict-modal-en" class="text-stone-600 dark:text-stone-400 leading-relaxed"></p>
+      <!-- Modal Body -->
+      <div class="p-4 sm:p-6 flex-1 overflow-y-auto space-y-4">
+        <!-- English Definition -->
+        <div class="bg-stone-50 dark:bg-stone-800 p-3.5 rounded-2xl border border-stone-200/60 dark:border-stone-700">
+          <p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">English Meaning & Theological Definition:</p>
+          <p id="dict-modal-en" class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed"></p>
         </div>
 
-        <div class="bg-amber-50/50 dark:bg-amber-950/30 p-3 rounded-xl border border-amber-200/60 dark:border-amber-800/40">
-          <p class="font-semibold text-amber-900 dark:text-amber-300 font-telugu mb-1">తెలుగు వివరణ:</p>
-          <p id="dict-modal-te" class="text-amber-800 dark:text-amber-400 font-telugu leading-relaxed"></p>
+        <!-- Telugu Definition -->
+        <div class="bg-amber-50/70 dark:bg-amber-950/30 p-3.5 rounded-2xl border border-amber-200 dark:border-amber-900/40">
+          <p class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 font-telugu mb-1">తెలుగు అర్థము & లేఖన వివరణ:</p>
+          <p id="dict-modal-te" class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 font-telugu leading-relaxed"></p>
         </div>
 
-        <div id="dict-modal-context-wrapper" class="bg-emerald-50/50 dark:bg-emerald-950/30 p-3 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40">
-          <p class="font-semibold text-emerald-900 dark:text-emerald-300 mb-1">In this Chapter's Context:</p>
-          <p id="dict-modal-context" class="text-emerald-800 dark:text-emerald-400 leading-relaxed"></p>
+        <!-- First Scripture Occurrence -->
+        <div id="dict-modal-first-wrapper" class="bg-blue-50/70 dark:bg-blue-950/30 p-3.5 rounded-2xl border border-blue-200 dark:border-blue-900/40 hidden">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">First Scripture Occurrence</span>
+            <span id="dict-modal-first-ref" class="text-xs font-bold text-blue-800 dark:text-blue-300 bg-white/80 dark:bg-stone-800 px-2 py-0.5 rounded">Genesis 1:1</span>
+          </div>
+          <p id="dict-modal-first-text-en" class="text-xs text-stone-800 dark:text-stone-200 italic mb-1"></p>
+          <p id="dict-modal-first-text-te" class="text-xs text-stone-700 dark:text-stone-300 font-telugu"></p>
+        </div>
+
+        <!-- Context note -->
+        <div id="dict-modal-context-wrapper" class="bg-emerald-50/70 dark:bg-emerald-950/30 p-3.5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40 hidden">
+          <p class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400 mb-1">Chapter Context & Biblical Usage:</p>
+          <p id="dict-modal-context" class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed"></p>
+        </div>
+
+        <!-- Bilingual Verses Concordance -->
+        <div id="dict-modal-verses-wrapper" class="mt-4 pt-3 border-t border-stone-200 dark:border-stone-700">
+          <div class="flex items-center justify-between mb-2.5">
+            <h5 class="font-serif font-bold text-sm text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
+              <i data-lucide="book-open" class="w-4 h-4 text-amber-600"></i>
+              Bilingual Verse Concordance (ద్విభాషా వచనములు)
+            </h5>
+            <span id="dict-modal-verses-count" class="text-[11px] text-stone-500 font-medium"></span>
+          </div>
+          <div id="dict-modal-verses-list" class="space-y-2.5 max-h-64 overflow-y-auto pr-1">
+            <!-- Populated via JavaScript -->
+          </div>
         </div>
       </div>
     </div>

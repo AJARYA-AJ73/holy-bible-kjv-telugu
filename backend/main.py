@@ -201,9 +201,18 @@ def search_emotion(req: SearchQuery):
     query = raw_query.lower()
     query_words = set(re.findall(r'\w+', query))
 
-    # Check for anger or friendship conflict intent specifically
+    # Detect specific emotional & life crisis intents
     has_friend = any(w in query for w in ["friend", "friends", "friendship", "companion", "pal"])
     has_anger = any(w in query for w in ["angry", "mad", "furious", "wrath", "rage", "fight", "quarrel", "hate", "bitter", "betray", "hurt", "temper"])
+    has_money = any(w in query for w in ["money", "broke", "debt", "financial", "jobless", "unemployed", "rent", "bills", "bankrupt", "poverty", "డబ్బులు", "అప్పు"])
+    has_sickness = any(w in query for w in ["sick", "ill", "disease", "healing", "heal", "cancer", "pain", "hospital", "doctor", "fever", "stroke", "రోగము", "అనారోగ్యం", "స్వస్థత"])
+    has_rejection = any(w in query for w in ["rejected", "rejection", "betrayed", "betrayal", "abandoned", "cheated", "nobody loves", "unwanted", "left alone", "తిరస్కారము", "మోసము"])
+    has_hopeless = any(w in query for w in ["give up", "hopeless", "want to die", "end my life", "suicide", "no point in living", "tired of life", "meaningless", "నిరాశ", "విరక్తి"])
+    has_waiting = any(w in query for w in ["waiting", "impatient", "how long", "delay", "silent", "tired of waiting", "ఎదురుచూచుట", "నిరీక్షణ", "ఆలస్యము"])
+    has_guidance = any(w in query for w in ["confused", "confusion", "guidance", "decision", "direction", "crossroads", "what to do", "which path", "wisdom", "గందరగోళం", "నడిపింపు"])
+    has_peace = any(w in query for w in ["peace", "sleep", "insomnia", "rest", "calm", "can't sleep", "cant sleep", "night terror", "శాంతి", "నిద్ర", "ప్రశాంతత"])
+    has_gratitude = any(w in query for w in ["grateful", "thankful", "praise", "blessed", "joy", "rejoice", "thanksgiving", "కృతజ్ఞత", "స్తుతి", "ఆనందం"])
+    has_addiction = any(w in query for w in ["addicted", "addiction", "alcohol", "drugs", "smoking", "pornography", "lust", "habits", "bondage", "chains", "వ్యసనము", "బానిసత్వం", "విడుదల"])
 
     best_match = None
     best_score = 0
@@ -213,19 +222,37 @@ def search_emotion(req: SearchQuery):
         score = 0
         emo_id = emo.get("id", "")
 
-        # High priority boost for friend conflict
+        # Intent-based priority boosting
         if has_friend and has_anger and emo_id == "anger_at_friend_conflict":
-            score += 40
+            score += 45
         elif has_anger and emo_id == "anger_and_wrath" and not has_friend:
-            score += 30
+            score += 35
+        elif has_money and emo_id == "financial_distress":
+            score += 40
+        elif has_sickness and emo_id == "sickness_and_healing":
+            score += 40
+        elif has_rejection and emo_id == "rejection_and_betrayal":
+            score += 40
+        elif has_hopeless and emo_id == "hopelessness_and_giving_up":
+            score += 45
+        elif has_waiting and emo_id == "waiting_on_god_impatience":
+            score += 40
+        elif has_guidance and emo_id == "confusion_and_guidance":
+            score += 40
+        elif has_peace and emo_id == "peace_and_rest":
+            score += 40
+        elif has_gratitude and emo_id == "gratitude_and_praise":
+            score += 40
+        elif has_addiction and emo_id == "addiction_and_bondage":
+            score += 40
 
         for kw in emo.get("keywords", []):
             if kw == query:
-                score += 25
+                score += 30
             elif kw in query:
                 score += 15
             elif any(w in kw for w in query_words if len(w) > 2):
-                score += 3
+                score += 4
 
         if score > best_score:
             best_score = score
@@ -239,8 +266,8 @@ def search_emotion(req: SearchQuery):
         }
 
     # Fallback to downcast comfort ONLY if words explicitly indicate sadness/depression
-    if any(term in query for term in ["depressed", "depression", "sad", "crying", "brokenhearted", "hopeless", "want to die", "give up"]):
-        dep = next((e for e in EMOTIONS_DATA if e["id"] == "depressed"), None)
+    if any(term in query for term in ["depressed", "depression", "sad", "crying", "brokenhearted"]):
+        dep = next((e for e in emo_list if e["id"] == "depressed"), None)
         return {"query": raw_query, "found": True, "data": dep}
 
     # Dynamic FTS5 scripture comfort fallback across 31,100 verses:
@@ -319,44 +346,148 @@ def get_suffering_arcs(q: Optional[str] = None):
 
     return {"arcs": results if results else SUFFERING_DATA}
 
+@app.get("/api/dictionary/words")
+def get_dictionary_words(
+    q: Optional[str] = None,
+    letter: Optional[str] = None,
+    category: Optional[str] = None,
+    limit: int = 40,
+    offset: int = 0
+):
+    conn = get_db()
+    cur = conn.cursor()
+
+    conditions = []
+    params = []
+
+    if q:
+        clean_q = q.strip().lower()
+        conditions.append("(word LIKE ? OR definition_en LIKE ? OR definition_te LIKE ?)")
+        params.extend([f"%{clean_q}%", f"%{clean_q}%", f"%{clean_q}%"])
+
+    if letter:
+        clean_letter = letter.strip().lower()[:1]
+        conditions.append("word LIKE ?")
+        params.append(f"{clean_letter}%")
+
+    if category and category.lower() != "all":
+        conditions.append("category = ?")
+        params.append(category)
+
+    where_clause = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+
+    try:
+        cur.execute(f"SELECT COUNT(*) FROM kjv_lexicon {where_clause}", params)
+        total_count = cur.fetchone()[0]
+
+        cur.execute(f"""
+            SELECT id, word, display_word, category, occurrences_total, occurrences_ot, occurrences_nt,
+                   first_reference, first_reference_te, definition_en, definition_te, context_note
+            FROM kjv_lexicon
+            {where_clause}
+            ORDER BY 
+                CASE WHEN category != 'Biblical Vocabulary' THEN 1 ELSE 2 END,
+                occurrences_total DESC
+            LIMIT ? OFFSET ?
+        """, params + [limit, offset])
+        rows = [dict(r) for r in cur.fetchall()]
+    except Exception as e:
+        total_count = 0
+        rows = []
+    finally:
+        conn.close()
+
+    return {
+        "total": total_count,
+        "limit": limit,
+        "offset": offset,
+        "words": rows
+    }
+
 @app.get("/api/dictionary/lookup")
 def lookup_word(word: str, book: Optional[str] = None, chapter: Optional[int] = None):
     clean_word = word.lower().strip()
-    found_entry = None
-    for entry in DICTIONARY_DATA:
-        if entry["word"].lower() == clean_word:
-            found_entry = entry
-            break
+    if not clean_word:
+        return {"found": False, "message": "Please provide a word."}
 
-    if not found_entry:
-        # Partial match
-        for entry in DICTIONARY_DATA:
-            if clean_word in entry["word"].lower() or entry["word"].lower() in clean_word:
-                found_entry = entry
-                break
+    conn = get_db()
+    cur = conn.cursor()
 
-    if not found_entry:
+    # 1. Check kjv_lexicon in database
+    word_entry = None
+    try:
+        cur.execute("SELECT * FROM kjv_lexicon WHERE word = ? LIMIT 1", (clean_word,))
+        row = cur.fetchone()
+        if not row:
+            cur.execute("SELECT * FROM kjv_lexicon WHERE word LIKE ? ORDER BY occurrences_total DESC LIMIT 1", (f"{clean_word}%",))
+            row = cur.fetchone()
+        if row:
+            word_entry = dict(row)
+    except Exception:
+        pass
+
+    # 2. Fetch bilingual verses containing this word via FTS5
+    verses = []
+    try:
+        cur.execute("""
+            SELECT v.id, b.name_en AS book_name_en, b.name_te AS book_name_te, b.testament, v.chapter, v.verse, v.text_en, v.text_te
+            FROM verses v
+            JOIN books b ON v.book_id = b.id
+            WHERE v.rowid IN (SELECT rowid FROM verses_fts WHERE verses_fts MATCH ?)
+            ORDER BY v.id ASC
+            LIMIT 25
+        """, (f'"{clean_word}"',))
+        verses = [dict(r) for r in cur.fetchall()]
+    except Exception:
+        pass
+
+    conn.close()
+
+    if word_entry:
         return {
-            "word": word,
-            "found": False,
-            "message": f"Meaning for '{word}' is being added to the theological concordance."
+            "found": True,
+            "word": word_entry["word"],
+            "display_word": word_entry["display_word"],
+            "category": word_entry["category"],
+            "occurrences_total": word_entry["occurrences_total"],
+            "occurrences_ot": word_entry["occurrences_ot"],
+            "occurrences_nt": word_entry["occurrences_nt"],
+            "first_reference": word_entry["first_reference"],
+            "first_reference_te": word_entry["first_reference_te"],
+            "first_text_en": word_entry.get("first_text_en"),
+            "first_text_te": word_entry.get("first_text_te"),
+            "definition_en": word_entry["definition_en"],
+            "definition_te": word_entry["definition_te"],
+            "context_note": word_entry["context_note"],
+            "verses_count": len(verses),
+            "verses": verses
         }
 
-    # Contextual note
-    context_note = None
-    if book and "chapters" in found_entry:
-        for ref_key, text in found_entry["chapters"].items():
-            if book.lower() in ref_key.lower():
-                context_note = text
-                break
+    if verses:
+        first_v = verses[0]
+        return {
+            "found": True,
+            "word": clean_word,
+            "display_word": clean_word.capitalize(),
+            "category": "Biblical Vocabulary",
+            "occurrences_total": len(verses),
+            "occurrences_ot": sum(1 for v in verses if v.get("testament") == "OT"),
+            "occurrences_nt": sum(1 for v in verses if v.get("testament") == "NT"),
+            "first_reference": f"{first_v['book_name_en']} {first_v['chapter']}:{first_v['verse']}",
+            "first_reference_te": f"{first_v['book_name_te']} {first_v['chapter']}:{first_v['verse']}",
+            "first_text_en": first_v["text_en"],
+            "first_text_te": first_v["text_te"],
+            "definition_en": f"Scriptural term appearing across the King James Bible.",
+            "definition_te": f"పరిశుద్ధ గ్రంథములో ప్రస్తావించబడిన వాక్య పదము.",
+            "context_note": f"First found in {first_v['book_name_en']} {first_v['chapter']}:{first_v['verse']}.",
+            "verses_count": len(verses),
+            "verses": verses
+        }
 
     return {
-        "word": found_entry["word"],
-        "found": True,
-        "definition_en": found_entry["definition_en"],
-        "definition_te": found_entry["definition_te"],
-        "context_note": context_note,
-        "all_chapter_contexts": found_entry.get("chapters", {})
+        "word": word,
+        "found": False,
+        "message": f"No biblical occurrences found for '{word}' in the King James Bible."
     }
 
 @app.get("/api/search/verses")

@@ -609,118 +609,262 @@ function renderSufferingArcs(arcs) {
 }
 
 // -------------------------------------------------------------
-// TAB 5: IN-CONTEXT DICTIONARY
+// TAB 5: IN-CONTEXT DICTIONARY & FULL KJV LEXICON
 // -------------------------------------------------------------
-let cachedDictionary = [];
+let dictState = {
+  q: "",
+  letter: "",
+  category: "all",
+  offset: 0,
+  limit: 40,
+  total: 0,
+  words: [],
+  debounceTimer: null
+};
 
-async function loadDictionaryList() {
-  try {
-    const res = await fetch(`${API_BASE}/api/suffering/arcs`); // trigger backend
-    // Load dictionary words from our knowledge base
-    cachedDictionary = [
-      {
-        word: "propitiation",
-        definition_en: "An atoning sacrifice that satisfies divine justice, turns away holy wrath, and reconciles us with God.",
-        definition_te: "పాపపరిహారార్థ బలి / దేవుని న్యాయమైన కోపమును శాంతిపరచి సమాధానపరచు ప్రాయశ్చిత్తము.",
-        context_note: "In Romans 3:25 and 1 John 2:2, Christ is our ultimate Mercy Seat where divine holiness and love embrace."
-      },
-      {
-        word: "firmament",
-        definition_en: "The vast arch or expanse of the sky separating the atmosphere from the earth.",
-        definition_te: "ఆకాశమండలము లేదా భూమిపైనున్న మహా విశాలము.",
-        context_note: "Genesis 1:6-8: God created the expanse on the second day to divide the waters."
-      },
-      {
-        word: "beseech",
-        definition_en: "To passionately and tenderly plead out of deep love rather than cold legal command.",
-        definition_te: "అధికారముతో ఆజ్ఞాపించక ప్రేమతో బతిమాలుకొనుట లేదా వేడుకొనుట.",
-        context_note: "Romans 12:1: Paul tenderly urges believers to dedicate their lives as living sacrifices."
-      },
-      {
-        word: "quickened",
-        definition_en: "Resurrected from spiritual deadness into vibrant, supernatural life.",
-        definition_te: "ఆత్మీయ మరణములో నుండి నూతనముగా బ్రతికించబడుట / సజీవులుగా చేయబడుట.",
-        context_note: "Ephesians 2:1: God made us alive together with Christ when we were dead in sin."
-      },
-      {
-        word: "selah",
-        definition_en: "A musical and reflective directive meaning 'pause, stop, and let this truth sink into your soul'.",
-        definition_te: "కీర్తనలలో ఆగి, చెప్పబడిన సత్యమును ధ్యానించుటకు ఇవ్వబడిన విరామము.",
-        context_note: "Appears over 70 times throughout Psalms as a sacred moment of quiet reflection."
-      },
-      {
-        word: "grace",
-        definition_en: "God's unmerited, unearned divine favor freely given to the undeserving.",
-        definition_te: "మన అర్హతను బట్టి కాక దేవుడు ఉచితముగా అనుగ్రహించు దైవిక దయ.",
-        context_note: "Ephesians 2:8: Salvation is an absolute gift of grace through faith, not works."
-      },
-      {
-        word: "justification",
-        definition_en: "A legal decree in God's courtroom where a sinner is declared fully righteous through faith in Jesus.",
-        definition_te: "క్రీస్తునందలి విశ్వాసము ద్వారా దేవుని ఎదుట నీతిమంతులుగా తీర్చబడుట.",
-        context_note: "Romans 5:1: Being justified by faith, we have peace with God."
-      },
-      {
-        word: "tribulation",
-        definition_en: "Crushing trouble or pressure that separates faith from worldly superficiality.",
-        definition_te: "గోధుమల నుండి పొట్టును వేరుచేయు రోలు వంటి తీవ్రమైన శ్రమ లేదా వేదన.",
-        context_note: "John 16:33: In the world ye shall have tribulation: but be of good cheer; I have overcome the world."
-      }
-    ];
+function initDictAlphaBar() {
+  const container = document.getElementById("dict-alpha-bar");
+  if (!container || container.children.length > 0) return;
 
-    renderDictionaryList(cachedDictionary);
-  } catch (err) {
-    console.error("Error loading dictionary:", err);
-  }
-}
+  const allBtn = document.createElement("button");
+  allBtn.className = "dict-alpha-btn active";
+  allBtn.innerText = "All";
+  allBtn.onclick = () => setDictLetter("");
+  container.appendChild(allBtn);
 
-function handleDictFilter() {
-  const q = (document.getElementById("dict-search-input")?.value || "").toLowerCase().trim();
-  const filtered = cachedDictionary.filter(d => 
-    d.word.toLowerCase().includes(q) || 
-    d.definition_en.toLowerCase().includes(q) ||
-    d.definition_te.toLowerCase().includes(q)
-  );
-  renderDictionaryList(filtered);
-}
-
-function renderDictionaryList(words) {
-  const container = document.getElementById("dictionary-list-container");
-  container.innerHTML = "";
-
-  words.forEach(w => {
-    const card = document.createElement("div");
-    card.className = "bg-white dark:bg-stone-800/90 rounded-2xl p-4 sm:p-5 border border-stone-200 dark:border-stone-700 shadow-xs hover:border-amber-400 transition";
-    card.innerHTML = `
-      <div class="flex items-center justify-between mb-2">
-        <h4 class="font-serif font-bold text-lg text-amber-700 dark:text-amber-400 capitalize">${w.word}</h4>
-        <span class="text-[10px] bg-stone-100 dark:bg-stone-700 px-2 py-0.5 rounded text-stone-500 font-semibold uppercase">Theological Term</span>
-      </div>
-      <p class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 mb-2 leading-relaxed">${w.definition_en}</p>
-      <p class="text-xs sm:text-sm text-amber-800 dark:text-amber-400 font-telugu leading-relaxed pt-2 border-t border-stone-100 dark:border-stone-700 mb-3">${w.definition_te}</p>
-      ${w.context_note ? `
-        <div class="bg-amber-50/50 dark:bg-stone-900/50 p-2.5 rounded-xl border border-amber-200/50 dark:border-stone-700/60 text-[11px] text-stone-600 dark:text-stone-400">
-          <strong>Contextual Usage:</strong> ${w.context_note}
-        </div>
-      ` : ''}
-    `;
-    container.appendChild(card);
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  letters.forEach(letter => {
+    const btn = document.createElement("button");
+    btn.className = "dict-alpha-btn";
+    btn.innerText = letter;
+    btn.onclick = () => setDictLetter(letter);
+    container.appendChild(btn);
   });
 }
 
-// Contextual popover modal for word click
+async function loadDictionaryList(reset = true) {
+  if (reset) {
+    dictState.offset = 0;
+    dictState.words = [];
+  }
+
+  initDictAlphaBar();
+  const statusEl = document.getElementById("dict-status-text");
+  if (statusEl) statusEl.innerText = "Searching KJV Lexicon...";
+
+  try {
+    const params = new URLSearchParams({
+      limit: dictState.limit,
+      offset: dictState.offset
+    });
+    if (dictState.q) params.set("q", dictState.q);
+    if (dictState.letter) params.set("letter", dictState.letter);
+    if (dictState.category && dictState.category !== "all") params.set("category", dictState.category);
+
+    const res = await fetch(`${API_BASE}/api/dictionary/words?${params.toString()}`);
+    const data = await res.json();
+
+    dictState.total = data.total || 0;
+    if (reset) {
+      dictState.words = data.words || [];
+    } else {
+      dictState.words = dictState.words.concat(data.words || []);
+    }
+
+    renderDictionaryList(dictState.words, !reset);
+
+    // Update status bar
+    if (statusEl) {
+      if (dictState.q) {
+        statusEl.innerText = `Found ${dictState.total} words matching "${dictState.q}"`;
+      } else if (dictState.letter) {
+        statusEl.innerText = `Letter "${dictState.letter}": ${dictState.total.toLocaleString()} KJV words`;
+      } else if (dictState.category !== "all") {
+        statusEl.innerText = `${dictState.category}: ${dictState.total.toLocaleString()} words`;
+      } else {
+        statusEl.innerText = `Showing ${dictState.words.length} of ${dictState.total.toLocaleString()} KJV Bible words`;
+      }
+    }
+
+    // Toggle Load More button
+    const loadMoreContainer = document.getElementById("dict-load-more-container");
+    if (loadMoreContainer) {
+      if (dictState.words.length < dictState.total) {
+        loadMoreContainer.classList.remove("hidden");
+      } else {
+        loadMoreContainer.classList.add("hidden");
+      }
+    }
+  } catch (err) {
+    console.error("Error loading dictionary:", err);
+    if (statusEl) statusEl.innerText = "Error connecting to Bible dictionary server.";
+  }
+}
+
+function handleDictSearchInput() {
+  clearTimeout(dictState.debounceTimer);
+  const input = document.getElementById("dict-search-input");
+  const clearBtn = document.getElementById("dict-clear-btn");
+  const query = (input?.value || "").trim();
+
+  if (clearBtn) {
+    if (query) clearBtn.classList.remove("hidden");
+    else clearBtn.classList.add("hidden");
+  }
+
+  dictState.debounceTimer = setTimeout(() => {
+    dictState.q = query;
+    dictState.offset = 0;
+    loadDictionaryList(true);
+  }, 250);
+}
+
+function clearDictSearch() {
+  const input = document.getElementById("dict-search-input");
+  if (input) input.value = "";
+  const clearBtn = document.getElementById("dict-clear-btn");
+  if (clearBtn) clearBtn.classList.add("hidden");
+  dictState.q = "";
+  dictState.offset = 0;
+  loadDictionaryList(true);
+}
+
+function setDictCategory(cat) {
+  dictState.category = cat;
+  dictState.offset = 0;
+
+  document.querySelectorAll(".dict-cat-btn").forEach(btn => {
+    if (cat === "all" && btn.innerText.includes("All")) {
+      btn.classList.add("active");
+    } else if (btn.innerText.includes(cat)) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  loadDictionaryList(true);
+}
+
+function setDictLetter(letter) {
+  dictState.letter = letter;
+  dictState.offset = 0;
+
+  document.querySelectorAll(".dict-alpha-btn").forEach(btn => {
+    if ((!letter && btn.innerText === "All") || btn.innerText === letter) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  loadDictionaryList(true);
+}
+
+function loadMoreDictionaryWords() {
+  dictState.offset += dictState.limit;
+  loadDictionaryList(false);
+}
+
+function renderDictionaryList(words, append = false) {
+  const container = document.getElementById("dictionary-list-container");
+  if (!container) return;
+  if (!append) container.innerHTML = "";
+
+  if (words.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-2 text-center py-10 bg-white dark:bg-stone-800/60 rounded-3xl border border-stone-200 dark:border-stone-700">
+        <i data-lucide="book-x" class="w-10 h-10 text-stone-400 mx-auto mb-2"></i>
+        <h4 class="font-serif font-bold text-base text-stone-800 dark:text-stone-200">No words found</h4>
+        <p class="text-xs text-stone-500">Try searching for any KJV word e.g. "chariot", "mercy", "covenant", or "propitiation".</p>
+      </div>
+    `;
+    initLucide();
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  const wordsToRender = append ? words.slice(dictState.offset) : words;
+
+  wordsToRender.forEach(w => {
+    const card = document.createElement("div");
+    card.className = "bg-white dark:bg-stone-800/90 rounded-2xl p-4 sm:p-5 border border-stone-200 dark:border-stone-700 shadow-xs hover:border-amber-400 hover:shadow-md transition cursor-pointer flex flex-col justify-between";
+    card.onclick = () => openDictLookup(w.word);
+
+    const isTheological = w.category && w.category !== "Biblical Vocabulary";
+    const catBadgeClass = isTheological 
+      ? "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300"
+      : "bg-stone-100 dark:bg-stone-700 text-stone-600 dark:text-stone-300";
+
+    card.innerHTML = `
+      <div>
+        <div class="flex items-center justify-between mb-2 gap-2 flex-wrap">
+          <h4 class="font-serif font-bold text-lg text-stone-900 dark:text-stone-100 capitalize">${w.display_word || w.word}</h4>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[10px] ${catBadgeClass} px-2 py-0.5 rounded font-semibold uppercase tracking-wider">${w.category || "Vocabulary"}</span>
+            ${w.occurrences_total ? `<span class="text-[10px] bg-amber-50 dark:bg-stone-700 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded font-semibold">${w.occurrences_total}x in KJV</span>` : ""}
+          </div>
+        </div>
+        <p class="text-xs sm:text-sm text-stone-800 dark:text-stone-200 mb-2 leading-relaxed">${w.definition_en || "Biblical term in the King James Version."}</p>
+        <p class="text-xs sm:text-sm text-amber-800 dark:text-amber-400 font-telugu leading-relaxed pt-2 border-t border-stone-100 dark:border-stone-700 mb-2">${w.definition_te || "పరిశుద్ధ గ్రంథములో ప్రస్తావించబడిన వాక్య పదము."}</p>
+        ${w.first_reference ? `
+          <div class="text-[11px] text-stone-500 dark:text-stone-400 flex items-center gap-1 mt-1">
+            <span class="font-semibold text-stone-600 dark:text-stone-300">First in:</span> ${w.first_reference} (${w.first_reference_te || ""})
+          </div>
+        ` : ""}
+      </div>
+      <div class="mt-3 pt-2 border-t border-stone-100 dark:border-stone-700/60 flex items-center justify-between text-[11px] text-amber-600 dark:text-amber-400 font-medium">
+        <span>Click to view concordance verses</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+      </div>
+    `;
+    fragment.appendChild(card);
+  });
+
+  container.appendChild(fragment);
+  initLucide();
+}
+
 async function openDictLookup(word) {
   const modal = document.getElementById("dict-modal");
+  if (!modal) return;
+
   document.getElementById("dict-modal-word").innerText = word;
-  
+  document.getElementById("dict-modal-en").innerText = "Loading theological definition & concordance...";
+  document.getElementById("dict-modal-te").innerText = "వివరణ లోడ్ అవుతోంది...";
+  document.getElementById("dict-modal-stats").innerText = "Searching occurrences...";
+  document.getElementById("dict-modal-context-wrapper").classList.add("hidden");
+  document.getElementById("dict-modal-first-wrapper").classList.add("hidden");
+  document.getElementById("dict-modal-verses-list").innerHTML = "<div class='text-xs text-stone-400 py-3 text-center'>Searching verses in KJV & Telugu...</div>";
+  modal.classList.remove("hidden");
+
   try {
-    const res = await fetch(`${API_BASE}/api/dictionary/lookup?word=${encodeURIComponent(word)}&book=${encodeURIComponent(STATE.currentBook.name_en)}&chapter=${STATE.currentChapter}`);
+    const bookParam = STATE.currentBook ? encodeURIComponent(STATE.currentBook.name_en) : "";
+    const res = await fetch(`${API_BASE}/api/dictionary/lookup?word=${encodeURIComponent(word)}&book=${bookParam}&chapter=${STATE.currentChapter || 1}`);
     const data = await res.json();
 
     if (data.found) {
-      document.getElementById("dict-modal-en").innerText = data.definition_en;
-      document.getElementById("dict-modal-te").innerText = data.definition_te;
+      document.getElementById("dict-modal-word").innerText = data.display_word || data.word;
+      document.getElementById("dict-modal-cat").innerText = data.category || "Theological Lexicon";
       
+      const statsText = data.occurrences_total !== undefined
+        ? `Appears ${data.occurrences_total} times in KJV (${data.occurrences_ot || 0} OT, ${data.occurrences_nt || 0} NT)`
+        : "Found in Scripture";
+      document.getElementById("dict-modal-stats").innerText = statsText;
+
+      document.getElementById("dict-modal-en").innerText = data.definition_en || "Biblical word in the King James Bible.";
+      document.getElementById("dict-modal-te").innerText = data.definition_te || "పరిశుద్ధ గ్రంథములో ప్రస్తావించబడిన వాక్య పదము.";
+
+      // First occurrence
+      if (data.first_reference && data.first_text_en) {
+        const firstWrap = document.getElementById("dict-modal-first-wrapper");
+        firstWrap.classList.remove("hidden");
+        document.getElementById("dict-modal-first-ref").innerText = `${data.first_reference} (${data.first_reference_te || ""})`;
+        document.getElementById("dict-modal-first-text-en").innerText = `"${data.first_text_en}"`;
+        document.getElementById("dict-modal-first-text-te").innerText = `"${data.first_text_te || ""}"`;
+      }
+
+      // Context note
       const ctxWrapper = document.getElementById("dict-modal-context-wrapper");
       if (data.context_note) {
         ctxWrapper.classList.remove("hidden");
@@ -728,13 +872,41 @@ async function openDictLookup(word) {
       } else {
         ctxWrapper.classList.add("hidden");
       }
+
+      // Verses list
+      const versesList = document.getElementById("dict-modal-verses-list");
+      const versesCount = document.getElementById("dict-modal-verses-count");
+      const verses = data.verses || [];
+
+      if (versesCount) {
+        versesCount.innerText = verses.length > 0 ? `Showing first ${verses.length} verses` : "No verses found";
+      }
+
+      if (verses.length > 0) {
+        versesList.innerHTML = verses.map(v => `
+          <div class="p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800 border border-stone-200/60 dark:border-stone-700/60 text-xs">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-amber-700 dark:text-amber-400">
+                ${v.book_name_en} ${v.chapter}:${v.verse}
+              </span>
+              <span class="text-[11px] font-semibold text-stone-500 font-telugu">
+                ${v.book_name_te} ${v.chapter}:${v.verse}
+              </span>
+            </div>
+            <p class="text-stone-800 dark:text-stone-200 leading-relaxed mb-1">${v.text_en}</p>
+            <p class="text-stone-700 dark:text-stone-300 font-telugu leading-relaxed pt-1 border-t border-stone-200/40 dark:border-stone-700/40">${v.text_te}</p>
+          </div>
+        `).join("");
+      } else {
+        versesList.innerHTML = "<div class='text-xs text-stone-500 text-center py-2'>No verses retrieved.</div>";
+      }
     } else {
-      document.getElementById("dict-modal-en").innerText = `Definition for '${word}' is being added to the theological concordance.`;
-      document.getElementById("dict-modal-te").innerText = `'${word}' పదానికి వివరణ సిద్ధమవుతోంది.`;
-      document.getElementById("dict-modal-context-wrapper").classList.add("hidden");
+      document.getElementById("dict-modal-en").innerText = data.message || `No occurrences found for '${word}'.`;
+      document.getElementById("dict-modal-te").innerText = `'${word}' పదమునకు వివరములు లభించలేదు.`;
+      document.getElementById("dict-modal-stats").innerText = "Not found in KJV";
+      document.getElementById("dict-modal-verses-list").innerHTML = "";
     }
 
-    modal.classList.remove("hidden");
     initLucide();
   } catch (err) {
     console.error("Error opening dictionary lookup:", err);
@@ -742,7 +914,8 @@ async function openDictLookup(word) {
 }
 
 function closeDictModal() {
-  document.getElementById("dict-modal").classList.add("hidden");
+  const modal = document.getElementById("dict-modal");
+  if (modal) modal.classList.add("hidden");
 }
 
 // -------------------------------------------------------------
